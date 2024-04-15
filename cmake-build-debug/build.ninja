@@ -61,12 +61,6 @@ build CMakeFiles/ATMSimulator.dir/AccountHolder/AccountHolder.cpp.obj: CXX_COMPI
   OBJECT_DIR = CMakeFiles\ATMSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles\ATMSimulator.dir\AccountHolder
 
-build CMakeFiles/ATMSimulator.dir/AccountType/AccountType.cpp.obj: CXX_COMPILER__ATMSimulator_Debug C$:/Users/Roger$ Garcia/CLionProjects/ATMSimulator/AccountType/AccountType.cpp || cmake_object_order_depends_target_ATMSimulator
-  DEP_FILE = CMakeFiles\ATMSimulator.dir\AccountType\AccountType.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
-  OBJECT_DIR = CMakeFiles\ATMSimulator.dir
-  OBJECT_FILE_DIR = CMakeFiles\ATMSimulator.dir\AccountType
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ATMSimulator
@@ -75,7 +69,7 @@ build CMakeFiles/ATMSimulator.dir/AccountType/AccountType.cpp.obj: CXX_COMPILER_
 #############################################
 # Link the executable ATMSimulator.exe
 
-build ATMSimulator.exe: CXX_EXECUTABLE_LINKER__ATMSimulator_Debug CMakeFiles/ATMSimulator.dir/main.cpp.obj CMakeFiles/ATMSimulator.dir/AccountHolder/AccountHolder.cpp.obj CMakeFiles/ATMSimulator.dir/AccountType/AccountType.cpp.obj
+build ATMSimulator.exe: CXX_EXECUTABLE_LINKER__ATMSimulator_Debug CMakeFiles/ATMSimulator.dir/main.cpp.obj CMakeFiles/ATMSimulator.dir/AccountHolder/AccountHolder.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ATMSimulator.dir
