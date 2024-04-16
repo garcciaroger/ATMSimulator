@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.25)
-project(ATMSimulator)
+cmake_minimum_required(VERSION 3.10)
+project(ATMsim)  # Change "ATM" to your project name
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)  # Set the C++ standard to use
 
-add_executable(ATMSimulator
-        main.cpp AccountHolder/AccountHolder.cpp AccountHolder/AccountHolder.h AccountType/AccountType.cpp)
+# Add the source files for your project (main.cpp and account.cpp)
+add_executable(ATMsim main.cpp )  # Adjust paths as necessary 

@@ -1,3 +1,0 @@
-C:/Users/Roger Garcia/CLionProjects/ATMSimulator/cmake-build-debug/CMakeFiles/ATMSimulator.dir
-C:/Users/Roger Garcia/CLionProjects/ATMSimulator/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Roger Garcia/CLionProjects/ATMSimulator/cmake-build-debug/CMakeFiles/rebuild_cache.dir

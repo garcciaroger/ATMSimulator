@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/rogergarcia/Desktop/ATMSimulator/build",
+  "command": "/usr/bin/clang++   -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/ATMsim.dir/main.cpp.o -c /Users/rogergarcia/Desktop/ATMSimulator/main.cpp",
+  "file": "/Users/rogergarcia/Desktop/ATMSimulator/main.cpp",
+  "output": "CMakeFiles/ATMsim.dir/main.cpp.o"
+}
+]
