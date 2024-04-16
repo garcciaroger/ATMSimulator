@@ -1,5 +1,0 @@
-if(EXISTS "C:/Users/Roger Garcia/CLionProjects/ATMSimulator/cmake-build-debug/AccountHolderTests[1]_tests.cmake")
-  include("C:/Users/Roger Garcia/CLionProjects/ATMSimulator/cmake-build-debug/AccountHolderTests[1]_tests.cmake")
-else()
-  add_test(AccountHolderTests_NOT_BUILT AccountHolderTests_NOT_BUILT)
-endif()

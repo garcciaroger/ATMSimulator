@@ -1,7 +1,7 @@
 #pragma once
 #include<iostream>
 
-class AccountOwner{
+class AccountHolder{
 private:
     std::string first_name;
     std::string last_name;
@@ -13,10 +13,10 @@ private:
     std::string zip_code;
 public:
     //Default Constructor
-    AccountOwner() = default;
+    AccountHolder() = default;
 
     //Default Initllization
-    explicit AccountOwner(std::string fn, std::string ln, std::string email, std::string phone,
+    explicit AccountHolder(std::string fn, std::string ln, std::string email, std::string phone,
                  std::string address, std::string city, std::string state, std::string zip)
             : first_name(std::move(fn)), last_name(std::move(ln)), email_address(std::move(email)),
               phone_number(std::move(phone)), street_address(std::move(address)),
