@@ -1,5 +1,7 @@
 #pragma once
 #include<iostream>
+#include<cctype>
+#include<string>
 
 class AccountHolder{
 private:
@@ -40,35 +42,62 @@ public:
     inline const std::string& get_zip_code() const noexcept { return zip_code; }
 
     //Setters
-    bool set_first_name(std::string new_firstName){
+    //This function will get the users first name and check to see if it meets requirements
+    bool set_first_name(const std::string& new_firstName) {
+        // Maximum length of first name
+        const size_t MAX_LENGTH = 15;
+
+        // Check if the string is too long
+        if (new_firstName.size() > MAX_LENGTH) {
+            std::cout << "ERROR: First name is too long. It must be no more than " << MAX_LENGTH << " characters." << std::endl;
+            return false;
+        }
+
+        // Check if the string is empty
+        if (new_firstName.empty()) {
+            std::cout << "ERROR: Name cannot be empty." << std::endl;
+            return false;
+        }
+
+        // Check for invalid characters in a single pass
         for (char c : new_firstName) {
-            // Check if the character is a valid character for a last name
-            if (!std::isalpha(c) && c != '-') {
+            if (!std::isalpha(c) && c != ' ' && c != '-') {
                 std::cout << "ERROR: Invalid character in first name: " << c << std::endl;
                 return false;
             }
         }
-        if(new_firstName.empty()){
-            std::cout << "ERROR: Name Cannot be empty" << std::endl;
-            return false;
-        }
+
+        // If all characters are valid, set the first name and return true
         first_name = new_firstName;
         return true;
     }
 
     bool set_last_name(std::string new_lastName){
-        for (char c : new_lastName) {
-            // Check if the character is a valid character for a last name
-            if (!std::isalpha(c) && c != '-') {
-                std::cout << "ERROR: Invalid character in last name: " << c << std::endl;
+        // Maximum length of first name
+        const size_t MAX_LENGTH = 25;
+
+        // Check if the string is too long
+        if (new_lastName.size() > MAX_LENGTH) {
+            std::cout << "ERROR: First name is too long. It must be no more than " << MAX_LENGTH << " characters." << std::endl;
+            return false;
+        }
+
+        // Check if the string is empty
+        if (new_lastName.empty()) {
+            std::cout << "ERROR: Name cannot be empty." << std::endl;
+            return false;
+        }
+
+        // Check for invalid characters in a single pass
+        for (char c : new_firstName) {
+            if (!std::isalpha(c) && c != ' ' && c != '-') {
+                std::cout << "ERROR: Invalid character in first name: " << c << std::endl;
                 return false;
             }
         }
-        if(new_lastName.empty()){
-            std::cout << "ERROR: Name Cannot be empty" << std::endl;
-            return false;
-        }
-        last_name = new_lastName;
+
+        // If all characters are valid, set the first name and return true
+        first_name = new_firstName;
         return true;
     }
     bool set_email_address(std::string new_email_address){

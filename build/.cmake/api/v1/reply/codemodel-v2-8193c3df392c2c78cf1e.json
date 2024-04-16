@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "ATMsim",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -39,8 +41,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ATMsim::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ATMsim-Debug-923ed360353b410916ca.json",
+					"jsonFile" : "target-ATMsim-Debug-3e7e7094b1069120b961.json",
 					"name" : "ATMsim",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_account::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_account-Debug-75454b6ebdb54af4a581.json",
+					"name" : "test_account",
 					"projectIndex" : 0
 				}
 			]
