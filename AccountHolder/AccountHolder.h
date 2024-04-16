@@ -173,6 +173,4 @@ public:
     //Method
     bool gather_customer_information();
     void print_customer_details();
-
-
 };
