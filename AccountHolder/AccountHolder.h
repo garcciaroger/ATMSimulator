@@ -24,23 +24,6 @@ public:
               phone_number(std::move(phone)), street_address(std::move(address)),
               city(std::move(city)), state(std::move(state)), zip_code(std::move(zip)) {}
 
-    //Getters
-    inline std::string get_first_name() const {return first_name;}
-    // Returns the last name of the account owner
-    inline const std::string& get_last_name() const noexcept { return last_name; }
-    // Returns the email address of the account owner
-    inline const std::string& get_email_address() const noexcept { return email_address; }
-    // Returns the phone number of the account owner
-    inline const std::string& get_phone_number() const noexcept { return phone_number; }
-    // Returns the street address of the account owner
-    inline const std::string& get_street_address() const noexcept { return street_address; }
-    // Returns the city of the account owner
-    inline const std::string& get_city() const noexcept { return city; }
-    // Returns the state of the account owner
-    inline const std::string& get_state() const noexcept { return state; }
-    // Returns the zip code of the account owner
-    inline const std::string& get_zip_code() const noexcept { return zip_code; }
-
     //Setters
     //This function will get the users first name and check to see if it meets requirements
     bool set_first_name(const std::string& new_firstName) {
@@ -66,38 +49,61 @@ public:
                 return false;
             }
         }
-
+        // Check for invalid characters in the rest of the name and no consecutive spaces
+        char previousChar = new_firstName[0]; // Initialize previousChar to the first character
+        for (size_t i = 1; i < new_firstName.length(); i++) {
+            char c = new_firstName[i];
+            if (!std::isalpha(c) && c != ' ' && c != '-' && c != '.') {
+                std::cout << "ERROR: Invalid character in last name: " << c << std::endl;
+                return false;
+            }
+            // Check for consecutive spaces
+            if (c == ' ' && previousChar == ' ') {
+                std::cout << "ERROR: Consecutive spaces are not allowed." << std::endl;
+                return false;
+            }
+            previousChar = c; // Update previousChar to current char for next iteration
+        }
         // If all characters are valid, set the first name and return true
         first_name = new_firstName;
         return true;
     }
-
+    //This function will get the users last name and check to see if it meets requirements
     bool set_last_name(std::string new_lastName){
-        // Maximum length of first name
+        // Maximum length of last name
         const size_t MAX_LENGTH = 25;
-
         // Check if the string is too long
         if (new_lastName.size() > MAX_LENGTH) {
-            std::cout << "ERROR: First name is too long. It must be no more than " << MAX_LENGTH << " characters." << std::endl;
+            std::cout << "ERROR: Last name is too long. It must be no more than " << MAX_LENGTH << " characters." << std::endl;
             return false;
         }
-
         // Check if the string is empty
         if (new_lastName.empty()) {
-            std::cout << "ERROR: Name cannot be empty." << std::endl;
+            std::cout << "ERROR: Last name cannot be empty." << std::endl;
             return false;
         }
-
-        // Check for invalid characters in a single pass
-        for (char c : new_firstName) {
-            if (!std::isalpha(c) && c != ' ' && c != '-') {
-                std::cout << "ERROR: Invalid character in first name: " << c << std::endl;
+        // Check the first character is alphabetic
+        if (!std::isalpha(new_lastName[0])) {
+            std::cout << "ERROR: The first character of the last name must be alphabetic." << std::endl;
+            return false;
+        }
+        // Check for invalid characters in the rest of the name and no consecutive spaces
+        char previousChar = new_lastName[0]; // Initialize previousChar to the first character
+        for (size_t i = 1; i < new_lastName.length(); i++) {
+            char c = new_lastName[i];
+            if (!std::isalpha(c) && c != ' ' && c != '-' && c != '.') {
+                std::cout << "ERROR: Invalid character in last name: " << c << std::endl;
                 return false;
             }
+            // Check for consecutive spaces
+            if (c == ' ' && previousChar == ' ') {
+                std::cout << "ERROR: Consecutive spaces are not allowed." << std::endl;
+                return false;
+            }
+            previousChar = c; // Update previousChar to current char for next iteration
         }
-
-        // If all characters are valid, set the first name and return true
-        first_name = new_firstName;
+        // If all characters are valid, set the last name and return true
+        last_name = new_lastName;
         return true;
     }
     bool set_email_address(std::string new_email_address){
@@ -198,6 +204,23 @@ public:
         zip_code = new_zip;
         return true;
     }
+
+    //Getters
+    inline std::string get_first_name() const {return first_name;}
+    // Returns the last name of the account owner
+    inline const std::string& get_last_name() const noexcept { return last_name; }
+    // Returns the email address of the account owner
+    inline const std::string& get_email_address() const noexcept { return email_address; }
+    // Returns the phone number of the account owner
+    inline const std::string& get_phone_number() const noexcept { return phone_number; }
+    // Returns the street address of the account owner
+    inline const std::string& get_street_address() const noexcept { return street_address; }
+    // Returns the city of the account owner
+    inline const std::string& get_city() const noexcept { return city; }
+    // Returns the state of the account owner
+    inline const std::string& get_state() const noexcept { return state; }
+    // Returns the zip code of the account owner
+    inline const std::string& get_zip_code() const noexcept { return zip_code; }
 
     //Method
     bool gather_customer_information();
