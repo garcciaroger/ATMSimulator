@@ -29,19 +29,16 @@ public:
     bool set_first_name(const std::string& new_firstName) {
         // Maximum length of first name
         const size_t MAX_LENGTH = 15;
-
         // Check if the string is too long
         if (new_firstName.size() > MAX_LENGTH) {
             std::cout << "ERROR: First name is too long. It must be no more than " << MAX_LENGTH << " characters." << std::endl;
             return false;
         }
-
         // Check if the string is empty
         if (new_firstName.empty()) {
             std::cout << "ERROR: Name cannot be empty." << std::endl;
             return false;
         }
-
         // Check for invalid characters in a single pass
         for (char c : new_firstName) {
             if (!std::isalpha(c) && c != ' ' && c != '-') {
@@ -106,29 +103,59 @@ public:
         last_name = new_lastName;
         return true;
     }
+    //Gets user email address and tests input
     bool set_email_address(std::string new_email_address){
-        if (new_email_address.find('@') == std::string::npos) {
-            std::cout << "ERROR: Invalid Email address" << std::endl;
+        // Check if the email address is empty first
+        if (new_email_address.empty()) {
+            std::cout << "ERROR: Email cannot be empty." << std::endl;
             return false;
         }
-        if(new_email_address.empty()){
-            std::cout << "ERROR: Email Cannot be empty" << std::endl;
+        // Check for the presence of '@' symbol
+        size_t at_pos = new_email_address.find('@');
+        if (at_pos == std::string::npos) {
+            std::cout << "ERROR: Invalid Email address. '@' symbol missing." << std::endl;
             return false;
         }
+        // Check for the presence of a dot after '@'
+        size_t dot_pos = new_email_address.find('.', at_pos);
+        if (dot_pos == std::string::npos) {
+            std::cout << "ERROR: Invalid Email address. '.' missing after '@'." << std::endl;
+            return false;
+        }
+        // Ensure that '@' is not the first character and '.' is not directly after '@'
+        if (at_pos == 0 || dot_pos == at_pos + 1) {
+            std::cout << "ERROR: Invalid Email address. Misplaced '@' or '.'." << std::endl;
+            return false;
+        }
+        // Check for spaces, which are illegal in email addresses
+        if (new_email_address.find(' ') != std::string::npos) {
+            std::cout << "ERROR: Invalid Email address. Spaces are not allowed." << std::endl;
+            return false;
+        }
+        // Set the email address if all checks are passed
         email_address = new_email_address;
         return true;
     }
+    //Sets user phone number as well as test input
     bool set_phone_number(const std::string& new_phone_number) {
-        if (new_phone_number.length() != 10) {
-            std::cout << "ERROR: Invalid Phone number" << std::endl;
+    // Check if the phone number is empty
+        if (new_phone_number.empty()) {
+            std::cout << "ERROR: Phone Number Cannot be empty" << std::endl;
             return false;
         }
+        // Check for the length of the phone number
+        if (new_phone_number.length() != 10) {
+            std::cout << "ERROR: Invalid Phone number. It must contain exactly 10 digits." << std::endl;
+            return false;
+        }
+        // Check for any invalid characters (including whitespace)
         for (char c : new_phone_number) {
             if (!std::isdigit(c)) {
-                std::cout << "ERROR: Invalid Character" << std::endl;
+                std::cout << "ERROR: Invalid Character '" << c << "' found. Phone number must be numeric." << std::endl;
                 return false;
             }
         }
+        // Format the phone number
         std::string formatted_number;
         int count = 0;
         for (char digit : new_phone_number) {
@@ -138,69 +165,118 @@ public:
             formatted_number += digit;
             count++;
         }
-        if(new_phone_number.empty()){
-            std::cout << "ERROR: Phone Number Cannot be empty" << std::endl;
-            return false;
-        }
+
+        // Assuming phone_number is a member of the class, set its value
         phone_number = formatted_number;
         return true;
     }
+    //Sets user address as well as test input for correctness
     bool set_street_address(std::string new_street_address){
-        for(char c: new_street_address){
-            if(!std::isalpha(c) && !std::isspace(c)){
+         // Check if the state name is empty first
+        if (new_street_address.empty()) {
+            std::cout << "ERROR: State cannot be empty." << std::endl;
+            return false;
+        }
+        // Check for invalid characters in the state name
+        for (char c : new_street_address) {
+            if (!std::isalpha(c) && !std::isspace(c)) {
+                std::cout << "ERROR: Invalid character in state name. Only letters and spaces are allowed." << std::endl;
                 return false;
             }
         }
-        if(new_street_address.empty()){
-            std::cout << "ERROR: Street Address Cannot be empty" << std::endl;
+        //Optional: Check for leading/trailing whitespace or excessive spaces
+        if (std::isspace(static_cast<unsigned char>(new_street_address.front())) || std::isspace(static_cast<unsigned char>(new_street_address.back()))) {
+            std::cout << "ERROR: State name should not start or end with a space." << std::endl;
             return false;
         }
+        // Checking for multiple consecutive spaces (optional but good for normalization)
+        auto it = new_street_address.find("  ");
+        if (it != std::string::npos) {
+            std::cout << "ERROR: State name should not contain consecutive spaces." << std::endl;
+            return false;
+        }
+        // Assuming state is a member of the class, set its value
         street_address = new_street_address;
         return true;
     }
+    //This will set city and test for user input
     bool set_city(std::string new_city){
-        for(char c: new_city){
-            if(!std::isalpha(c) && !std::isspace(c)){
+         // Check if the state name is empty first
+        if (new_city.empty()) {
+            std::cout << "ERROR: State cannot be empty." << std::endl;
+            return false;
+        }
+        // Check for invalid characters in the state name
+        for (char c : new_city) {
+            if (!std::isalpha(c) && !std::isspace(c)) {
+                std::cout << "ERROR: Invalid character in state name. Only letters and spaces are allowed." << std::endl;
                 return false;
             }
         }
-        if(new_city.empty()){
-            std::cout << "ERROR: City Cannot be empty" << std::endl;
+        //Optional: Check for leading/trailing whitespace or excessive spaces
+        if (std::isspace(static_cast<unsigned char>(new_city.front())) || std::isspace(static_cast<unsigned char>(new_city.back()))) {
+            std::cout << "ERROR: State name should not start or end with a space." << std::endl;
             return false;
         }
-        city = new_city;
+        // Checking for multiple consecutive spaces (optional but good for normalization)
+        auto it = new_city.find("  ");
+        if (it != std::string::npos) {
+            std::cout << "ERROR: State name should not contain consecutive spaces." << std::endl;
+            return false;
+        }
+        // Assuming state is a member of the class, set its value
+        state = new_city;
         return true;
     }
     //This will set state and test input
     bool set_state(std::string new_state){
-        for(char c: new_state){
-            if(!std::isalpha(c) && !std::isspace(c)){
+        // Check if the state name is empty first
+        if (new_state.empty()) {
+            std::cout << "ERROR: State cannot be empty." << std::endl;
+            return false;
+        }
+        // Check for invalid characters in the state name
+        for (char c : new_state) {
+            if (!std::isalpha(c) && !std::isspace(c)) {
+                std::cout << "ERROR: Invalid character in state name. Only letters and spaces are allowed." << std::endl;
                 return false;
             }
         }
-        if(new_state.empty()){
-            std::cout << "ERROR: State Cannot be empty" << std::endl;
+        //Optional: Check for leading/trailing whitespace or excessive spaces
+        if (std::isspace(static_cast<unsigned char>(new_state.front())) || std::isspace(static_cast<unsigned char>(new_state.back()))) {
+            std::cout << "ERROR: State name should not start or end with a space." << std::endl;
             return false;
         }
+        // Checking for multiple consecutive spaces (optional but good for normalization)
+        auto it = new_state.find("  ");
+        if (it != std::string::npos) {
+            std::cout << "ERROR: State name should not contain consecutive spaces." << std::endl;
+            return false;
+        }
+        // Assuming state is a member of the class, set its value
         state = new_state;
         return true;
     }
     //This is to set a zip code and test to ensure input valitity
-    bool set_zip_code(std::string new_zip){
-        if(new_zip.length() != 5){
-            std::cout  << "Zip Length is 5 digits" << std::endl;
+    bool set_zip_code(std::string new_zip) {
+        // Check if the zip code is empty
+        if (new_zip.empty()) {
+            std::cout << "ERROR: Zip code cannot be empty." << std::endl;
             return false;
         }
-        for(char c: new_zip){
-            if(!std::isdigit(c)){
-                std::cout << "ERROR: Invalid Character " << std::endl;
+        // Check if the zip code is exactly 5 characters long
+        if (new_zip.length() != 5) {
+            std::cout << "ERROR: Zip code length must be 5 digits." << std::endl;
+            return false;
+        }
+        // Check for invalid characters and whitespace in the zip code
+        for (char c : new_zip) {
+            if (!std::isdigit(c) || std::isspace(static_cast<unsigned char>(c))) {
+                std::cout << "ERROR: Invalid character '" << c << "' in zip code; must be a digit and no spaces." << std::endl;
                 return false;
             }
         }
-        if(new_zip.empty()){
-            std::cout << "ERROR: Zip Code Cannot be empty" << std::endl;
-            return false;
-        }
+        // Assuming zip_code is a member of the class, set its value
         zip_code = new_zip;
         return true;
     }
