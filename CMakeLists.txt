@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)  # Ensure -std=c++17 is added to the compile commands
 
 # Add the main application executable
-add_executable(ATMsim main.cpp AccountHolder/AccountHolder.cpp)  # Adjust paths as necessary
+add_executable(ATMsim main.cpp AccountHolder/AccountHolder.cpp CheckingSaving/CheckingSaving.cpp)  # Adjust paths as necessary
 
 # Setup for GoogleTest
 find_package(GTest REQUIRED)  # This locates the GoogleTest library

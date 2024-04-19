@@ -16,7 +16,6 @@ private:
 public:
     //Default Constructor
     AccountHolder() = default;
-
     //Getters
     inline std::string get_first_name() const {return first_name;}
     // Returns the last name of the account owner
@@ -297,9 +296,6 @@ public:
         zip_code = new_zip;
         return true;
     }
-
-    
-
     //Method
     bool gather_customer_information();
     void print_customer_details();

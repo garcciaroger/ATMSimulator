@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "ATMsim.pdb"
   "CMakeFiles/ATMsim.dir/AccountHolder/AccountHolder.cpp.o"
   "CMakeFiles/ATMsim.dir/AccountHolder/AccountHolder.cpp.o.d"
+  "CMakeFiles/ATMsim.dir/CheckingSaving/CheckingSaving.cpp.o"
+  "CMakeFiles/ATMsim.dir/CheckingSaving/CheckingSaving.cpp.o.d"
   "CMakeFiles/ATMsim.dir/main.cpp.o"
   "CMakeFiles/ATMsim.dir/main.cpp.o.d"
 )

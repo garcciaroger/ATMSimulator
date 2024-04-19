@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cctype>
 #include <string>
+#include "AccountHolder.h"
 
 class Account{
 private:
@@ -16,7 +17,6 @@ public:
     // Parameterized Constructor
     Account(std::string name, std::string acc_number, std::string rout_number, double initial_balance)
         : account_name(std::move(name)), account_number(std::move(acc_number)), routing_number(std::move(rout_number)), balance(initial_balance) {}
-    
     //Getters
     inline std::string get_account_name() const {return account_name;}
     inline std::string get_account_number() const {return account_number;}
@@ -36,24 +36,12 @@ public:
 
     } 
     //Methods
-    bool deposit(double const amount){
-        if(amount <= 0){
-            std::cout << "ERROR: amount must be greater than 0" << std::endl;
-            return false;
-        }
-        if(amount > CONST_MAX_LIMIT){
-            std::cout << "ERROR: amount limit reached" << std::endl;
-            return false;
-        }
-    }
-    bool withdraw(double const amount){
-        if(amount <= 0){
-            std::cout << "ERROR: amout must be greater than 0" << std::endl;
-            return false;
-        }
-        if(amount > CONST_MAX_LIMIT){
-            std::cout << "ERROR: amout limit reached" << std::endl;
-            return false;
-        }
-    }
+    //Validates the user amount in that there's no characters and amount less than 0
+    bool validate_amount(double const amount);
+    //converts user amount to string to check for non digits
+    bool is_digit(double amount);
+    //deposit method
+    bool deposit(double const amount);
+    //withdraw method
+    bool withdraw(double const amount);
 };
