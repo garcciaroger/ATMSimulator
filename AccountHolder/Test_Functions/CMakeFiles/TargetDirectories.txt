@@ -1,3 +1,0 @@
-/Users/rogergarcia/Desktop/ATMSimulator/Test_Functions/CMakeFiles/test_account.dir
-/Users/rogergarcia/Desktop/ATMSimulator/Test_Functions/CMakeFiles/edit_cache.dir
-/Users/rogergarcia/Desktop/ATMSimulator/Test_Functions/CMakeFiles/rebuild_cache.dir

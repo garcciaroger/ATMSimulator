@@ -1,1 +1,0 @@
-/usr/bin/clang++ -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/AccountHolder.dir/AccountHolder/AccountHolder_test.cpp.o -o AccountHolder  /opt/homebrew/lib/libgtest_main.a /opt/homebrew/lib/libgtest.a 
