@@ -18,23 +18,9 @@ public:
     Account(std::string name, std::string acc_number, std::string rout_number, double initial_balance)
         : account_name(std::move(name)), account_number(std::move(acc_number)), routing_number(std::move(rout_number)), balance(initial_balance) {}
     //Getters
-    inline std::string get_account_name() const {return account_name;}
-    inline std::string get_account_number() const {return account_number;}
-    inline std::string get_routing_number() const {return routing_number;}
     inline double get_balance() const {return balance;}
     //Setters
-    void set_account_name(){
-
-    }
-    void set_account_number(){
-
-    }
-    void set_routing_number(){
-
-    }
-    void set_balance(int account_balance){
-        account_balance = balance;
-    } 
+    void set_balance(int account_balance){account_balance = balance;} 
     //Methods
     //Validates the user amount in that there's no characters and amount less than 0
     bool validate_amount(double const amount);
@@ -46,3 +32,27 @@ public:
     bool withdraw(double const amount);
 };
 
+class Checking : public Account{
+private:
+    std::string debit_card_number;
+    std::string month_expiry;
+    int security_code;
+public:
+    //Setter
+    void set_debit_number();
+    void set_month_expiry();
+    void set_security_code();
+    //Getter
+    void get_debit_number();
+    void get_month_expiry();
+    void get_security_code();
+
+};
+
+class Saving : public Account{
+private:
+    double intrest_rate;
+public:
+    void set_intrest_rate();
+    void get_intrest_rate();
+};

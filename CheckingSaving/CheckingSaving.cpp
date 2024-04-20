@@ -35,6 +35,8 @@ bool Account::deposit(double const amount){
     if(!validate_amount(amount)){
         return false;
     }
+    double total_balance = amount + balance;
+    set_balance(total_balance);
     return true;
 }
 //withdraw method
@@ -46,5 +48,7 @@ bool Account::withdraw(double const amount){
         std::cout << "ERROR: withdraw amount greater than total balance!" << std::endl;
         return false;
     }
+    double total_balance = amount - balance;
+    set_balance(total_balance);
     return true;
 }

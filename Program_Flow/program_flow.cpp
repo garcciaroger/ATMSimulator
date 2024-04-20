@@ -3,37 +3,37 @@
 #include "CheckingSaving.h"
 #include <cstdlib>
 
-int Flow::login() {
-    int option;
-    std::cout << "     Welcome to ATM Simulator     " << std::endl;
-    std::cout << "==================================" << std::endl;
-    std::cout << "1. Log In " << std::endl;
-    std::cout << "2. Sign Up " << std::endl;
-    std::cout << "3. Exit " << std::endl;
-    std::cout << "==================================" << std::endl;
-    std::cout << "Enter Option"; std::cin >> option;
-    return option;
-}
+// int Flow::login() {
+//     int option;
+//     std::cout << "     Welcome to ATM Simulator     " << std::endl;
+//     std::cout << "==================================" << std::endl;
+//     std::cout << "1. Log In " << std::endl;
+//     std::cout << "2. Sign Up " << std::endl;
+//     std::cout << "3. Exit " << std::endl;
+//     std::cout << "==================================" << std::endl;
+//     std::cout << "Enter Option"; std::cin >> option;
+//     return option;
+// }
 
-bool sign_up_option(){
-    //Creates new account class
-    AccountHolder newAccount;
-    //Gathers customer information
-    newAccount.gather_customer_information();
-    std::cout << std::endl;
-    //Creates a bool value to verify information
-    bool valid_information = newAccount.print_customer_details();
-    //If information is incorrect, sets to false and then re-enter data
-    if(!valid_information){
-        std::cout << "Re-enter your information correctly" << std::endl;
-        newAccount.gather_customer_information();
-    }
-    //If information is correct, data is set to true
-    newAccount.print_customer_details();
-    return true;
-}
+// bool sign_up_option(){
+//     //Creates new account class
+//     AccountHolder newAccount;
+//     //Gathers customer information
+//     newAccount.gather_customer_information();
+//     std::cout << std::endl;
+//     //Creates a bool value to verify information
+//     bool valid_information = newAccount.print_customer_details();
+//     //If information is incorrect, sets to false and then re-enter data
+//     if(!valid_information){
+//         std::cout << "Re-enter your information correctly" << std::endl;
+//         newAccount.gather_customer_information();
+//     }
+//     //If information is correct, data is set to true
+//     newAccount.print_customer_details();
+//     return true;
+// }
 
-int Flow::main_menu(Account& account) {
+void Flow::main_menu() {
     // Implementation of main menu
     int option;
     std::cout << "     Main Menu     " << std::endl;
@@ -45,16 +45,15 @@ int Flow::main_menu(Account& account) {
     std::cout << "===================" << std::endl;
     std::cout << "Enter Option"; std::cin >> option;
 
-    Account account;
     switch(option){
         case 1:{
-            deposit_menu(account);
+            deposit_menu();
         }
         case 2:{
-            withdraw_menu(account);
+            withdraw_menu();
         }
         case 3:{
-            check_balance_menu(account);
+            check_balance_menu();
         }
         case 4:{
             exit(0);
@@ -62,7 +61,7 @@ int Flow::main_menu(Account& account) {
     }
 }
 
-int Flow::deposit_menu(Account& account){
+int Flow::deposit_menu(){
     int option;
     std::cout << "    Deposit Menu   " << std::endl;
     std::cout << "===================" << std::endl;
@@ -72,6 +71,9 @@ int Flow::deposit_menu(Account& account){
     std::cout << "===================" << std::endl;
     std::cout << "Enter Option"; std::cin >> option;
 
+    Checking checking_account;
+    Saving saving_account;
+
     switch(option){
         //Checkings Account
         case 1: {
@@ -80,81 +82,46 @@ int Flow::deposit_menu(Account& account){
             do {
                 std::cout << "How much would you like to deposit?" << std::endl;
                 std::cin >> deposit_amount;
-                isValid = account.validate_amount(deposit_amount);
+                isValid = checking_account.validate_amount(deposit_amount);
 
                 if (!isValid) {
                     std::cout << "Invalid deposit amount. Please enter a valid amount." << std::endl;
                 }
             } while (!isValid);
             // Deposit the amount into the account
-            account.deposit(deposit_amount);
-
-            main_menu(account);
+            double total_balance = checking_account.deposit(deposit_amount) + checking_account.get_balance();
+            checking_account.set_balance(total_balance);
+            main_menu(checking_account);
             break;
         }
-
         //Savings Account
         case 2:{
+            double deposit_amount;
+            bool isValid = false;
+            do {
+                std::cout << "How much would you like to deposit?" << std::endl;
+                std::cin >> deposit_amount;
+                isValid = saving_account.validate_amount(deposit_amount);
 
+                if (!isValid) {
+                    std::cout << "Invalid deposit amount. Please enter a valid amount." << std::endl;
+                }
+            } while (!isValid);
+            // Deposit the amount into the account
+            double total_balance = saving_account.deposit(deposit_amount) + saving_account.get_balance();
+            saving_account.set_balance(total_balance);
+            main_menu(saving_account);
+            break;
         }
         //Exit from program
         case 3:{
-
+            exit(0);
         }
     }
     return option;
 }
 
 
-// int Flow::withdraw_menu(Account& account){
-//     int option;
-//     std::cout << "    Withdraw Menu   " << std::endl;
-//     std::cout << "===================" << std::endl;
-//     std::cout << "1. Checkings  " << std::endl;
-//     std::cout << "2. Savings " << std::endl;
-//     std::cout << "3. Exit " << std::endl;
-//     std::cout << "===================" << std::endl;
-//     std::cout << "Enter Option"; std::cin >> option;
-
-//     switch(option){
-//         //Checkings Account
-//         case 1:{
-
-//         }
-//         //Savings Account
-//         case 2:{
-
-//         }
-//         //Exit from program
-//         case 3:{
-
-//         }
-//     }
-// }
-
-// int Flow::check_balance_menu(Account& account){
-//     int option;
-//     std::cout << "   Check Balance   " << std::endl;
-//     std::cout << "===================" << std::endl;
-//     std::cout << "1. Checkings  " << std::endl;
-//     std::cout << "2. Savings " << std::endl;
-//     std::cout << "3. Exit " << std::endl;
-//     std::cout << "===================" << std::endl;
-//     std::cout << "Enter Option"; std::cin >> option;
-
-//     switch(option){
-//         //Checkings Account
-//         case 1:{
-
-//         }
-//         //Savings Account
-//         case 2:{
-
-//         }
-//         //Exit from program
-//         case 3:{
-
-//         }
-//     }
-// }
-
+void Flow::start_program(){
+    int main_menu();
+}
