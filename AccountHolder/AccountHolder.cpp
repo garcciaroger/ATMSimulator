@@ -78,7 +78,7 @@ bool AccountHolder::gather_customer_information(){
     return true; // Gathering successful
 }
 
-void AccountHolder::print_customer_details(){
+bool AccountHolder::print_customer_details(){
     std::cout << "     Customer Details     " << std::endl;
     std::cout << "==========================" << std::endl;
     std::cout << "First Name - " << get_first_name() << std::endl;

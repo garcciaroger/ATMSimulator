@@ -5,9 +5,11 @@
 class Flow {
 public:
     int login();
-    int main_menu();
-    int deposit_menu();
-    int withdraw_menu();
-    int check_balance_menu();
+    int main_menu(Account& account);
+    bool sign_up_option();
+    int deposit_menu(Account& account);
+    int withdraw_menu(Account& account);
+    int check_balance_menu(Account& account);
     void start_program();
 };
+

@@ -32,8 +32,8 @@ public:
     void set_routing_number(){
 
     }
-    void set_balance(){
-
+    void set_balance(int account_balance){
+        account_balance = balance;
     } 
     //Methods
     //Validates the user amount in that there's no characters and amount less than 0
