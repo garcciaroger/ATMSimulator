@@ -45,3 +45,4 @@ public:
     //withdraw method
     bool withdraw(double const amount);
 };
+

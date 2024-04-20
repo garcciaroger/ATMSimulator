@@ -4,7 +4,10 @@
 
 class Flow {
 public:
-    void login();
-    void main_menu();
+    int login();
+    int main_menu();
+    int deposit_menu();
+    int withdraw_menu();
+    int check_balance_menu();
     void start_program();
 };
