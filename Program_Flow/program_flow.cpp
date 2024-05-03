@@ -3,35 +3,67 @@
 #include "CheckingSaving.h"
 #include <cstdlib>
 
-// int Flow::login() {
-//     int option;
-//     std::cout << "     Welcome to ATM Simulator     " << std::endl;
-//     std::cout << "==================================" << std::endl;
-//     std::cout << "1. Log In " << std::endl;
-//     std::cout << "2. Sign Up " << std::endl;
-//     std::cout << "3. Exit " << std::endl;
-//     std::cout << "==================================" << std::endl;
-//     std::cout << "Enter Option"; std::cin >> option;
-//     return option;
-// }
+void Flow::login() {
+    int option;
+    std::cout << "     Welcome to ATM Simulator     " << std::endl;
+    std::cout << "==================================" << std::endl;
+    std::cout << "1. Log In " << std::endl;
+    std::cout << "2. Sign Up " << std::endl;
+    std::cout << "3. Exit " << std::endl;
+    std::cout << "==================================" << std::endl;
+    std::cout << "Enter Option"; std::cin >> option;
 
-// bool sign_up_option(){
-//     //Creates new account class
-//     AccountHolder newAccount;
-//     //Gathers customer information
-//     newAccount.gather_customer_information();
-//     std::cout << std::endl;
-//     //Creates a bool value to verify information
-//     bool valid_information = newAccount.print_customer_details();
-//     //If information is incorrect, sets to false and then re-enter data
-//     if(!valid_information){
-//         std::cout << "Re-enter your information correctly" << std::endl;
-//         newAccount.gather_customer_information();
-//     }
-//     //If information is correct, data is set to true
-//     newAccount.print_customer_details();
-//     return true;
-// }
+    switch(option){
+        case 1:{
+
+        }
+        case 2:{
+            sign_up_option();
+            break;
+        }
+        case 3:{
+            exit(0);
+            break;
+        }
+    }
+}
+
+void Flow::login() {
+    std::string username, password;
+    // Prompt for username and password
+    std::cout << "Enter username: ";
+    std::cin >> username;
+    std::cout << "Enter password: ";
+    std::cin >> password;
+    // Hardcoded credentials for the example
+    const std::string storedUsername = "admin";
+    const std::string storedPassword = "password123";
+    // Check if the entered credentials match the stored credentials
+    if (username == storedUsername && password == storedPassword) {
+        std::cout << "Login successful!" << std::endl;
+        // Code to handle successful login
+    } else {
+        std::cout << "Login failed: Incorrect username or password." << std::endl;
+        // Optionally, you can handle retries or log the failed attempt
+    }
+}
+
+void Flow::sign_up_option(){
+    //Creates new account class
+    AccountHolder newAccount;
+    //Gathers customer information
+    newAccount.gather_customer_information();
+    std::cout << std::endl;
+    //Creates a bool value to verify information
+    bool valid_information = newAccount.print_customer_details();
+    //If information is incorrect, sets to false and then re-enter data
+    if(!valid_information){
+        std::cout << "Re-enter your information correctly" << std::endl;
+        newAccount.gather_customer_information();
+    }
+    //If information is correct, data is set to true
+    newAccount.print_customer_details();
+}
 
 //Main menu of the application
 void Flow::main_menu() {
@@ -214,5 +246,5 @@ int Flow::check_balance_menu(){
 }
 //Start program
 void Flow::start_program(){
-    int main_menu();
+    int login();
 }

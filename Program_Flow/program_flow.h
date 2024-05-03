@@ -4,9 +4,9 @@
 
 class Flow {
 public:
-    int login();
+    void login();
     void main_menu();
-    bool sign_up_option();
+    void sign_up_option();
     int deposit_menu();
     int withdraw_menu();
     int check_balance_menu();
