@@ -2,20 +2,23 @@
 #include "AccountHolder.h"
 #include "CheckingSaving.h"
 #include <cstdlib>
+#include <fstream>
+#include <string>
 
 void Flow::login() {
     int option;
     std::cout << "     Welcome to ATM Simulator     " << std::endl;
     std::cout << "==================================" << std::endl;
-    std::cout << "1. Log In " << std::endl;
-    std::cout << "2. Sign Up " << std::endl;
+    std::cout << "1. Sign Up " << std::endl;
+    std::cout << "2. Log In " << std::endl;
     std::cout << "3. Exit " << std::endl;
     std::cout << "==================================" << std::endl;
     std::cout << "Enter Option"; std::cin >> option;
 
     switch(option){
         case 1:{
-
+            login();
+            break;
         }
         case 2:{
             sign_up_option();
@@ -28,6 +31,37 @@ void Flow::login() {
     }
 }
 
+void Flow::sign_up_option(){
+    //Creates new account class
+    AccountHolder newAccount;
+    //Gathers customer information
+    newAccount.gather_customer_information();
+    std::cout << std::endl;
+    //Creates a bool value to verify information
+    bool valid_information = newAccount.print_customer_details();
+    //If information is incorrect, sets to false and then re-enter data
+    if(!valid_information){
+        std::cout << "Re-enter your information correctly" << std::endl;
+        newAccount.gather_customer_information();
+    }
+    //If information is correct, data is set to true
+    newAccount.print_customer_details();
+    //Create a .txt file to store customer information
+    std::string AccountFile = newAccount.get_email_address() + "_account.txt";
+    std::ofstream outFile(AccountFile);
+    if(outFile.is_open()){
+        outFile << "First Name - " << newAccount.get_first_name() << "\n";
+        outFile << "Last Name - " << newAccount.get_last_name() << "\n";
+        outFile << "Email Address - " << newAccount.get_email_address() << "\n";
+        outFile << "Phone Number - " << newAccount.get_phone_number() << "\n";
+        outFile << "Street Address - " << newAccount.get_street_address() << "\n";
+        outFile << "City - " << newAccount.get_city() << "\n";
+        outFile << "State - " << newAccount.get_state() << "\n";
+        outFile << "Zip Code - " << newAccount.get_zip_code() << "\n";
+        outFile.close();
+    }
+}
+//Login application of main menu
 void Flow::login() {
     std::string username, password;
     // Prompt for username and password
@@ -47,24 +81,6 @@ void Flow::login() {
         // Optionally, you can handle retries or log the failed attempt
     }
 }
-
-void Flow::sign_up_option(){
-    //Creates new account class
-    AccountHolder newAccount;
-    //Gathers customer information
-    newAccount.gather_customer_information();
-    std::cout << std::endl;
-    //Creates a bool value to verify information
-    bool valid_information = newAccount.print_customer_details();
-    //If information is incorrect, sets to false and then re-enter data
-    if(!valid_information){
-        std::cout << "Re-enter your information correctly" << std::endl;
-        newAccount.gather_customer_information();
-    }
-    //If information is correct, data is set to true
-    newAccount.print_customer_details();
-}
-
 //Main menu of the application
 void Flow::main_menu() {
     // Implementation of main menu
