@@ -4,6 +4,7 @@
 
 class Flow {
 public:
+    void start_up_page();
     void login();
     void main_menu();
     void sign_up_option();

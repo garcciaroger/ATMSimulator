@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 
-void Flow::login() {
+void Flow::start_up_page() {
     int option;
     std::cout << "     Welcome to ATM Simulator     " << std::endl;
     std::cout << "==================================" << std::endl;
@@ -13,15 +13,15 @@ void Flow::login() {
     std::cout << "2. Log In " << std::endl;
     std::cout << "3. Exit " << std::endl;
     std::cout << "==================================" << std::endl;
-    std::cout << "Enter Option"; std::cin >> option;
+    std::cout << "Enter Option: "; std::cin >> option;
 
     switch(option){
         case 1:{
-            login();
+            sign_up_option();
             break;
         }
         case 2:{
-            sign_up_option();
+            login(); 
             break;
         }
         case 3:{
@@ -61,6 +61,12 @@ void Flow::sign_up_option(){
         outFile.close();
     }
 }
+
+
+
+
+
+
 //Login application of main menu
 void Flow::login() {
     std::string username, password;
@@ -109,6 +115,7 @@ void Flow::main_menu() {
         }
     }
 }
+
 //Deposit menu 
 int Flow::deposit_menu(){
     int option;
@@ -132,8 +139,7 @@ int Flow::deposit_menu(){
                 std::cout << "How much would you like to deposit?" << std::endl;
                 std::cin >> deposit_amount;
                 isValid = checking_account.validate_amount(deposit_amount);
-
-                if (!isValid) {
+                if(!isValid) {
                     std::cout << "Invalid deposit amount. Please enter a valid amount." << std::endl;
                 }
             } while (!isValid);
@@ -262,5 +268,5 @@ int Flow::check_balance_menu(){
 }
 //Start program
 void Flow::start_program(){
-    int login();
+    void start_up_page();
 }

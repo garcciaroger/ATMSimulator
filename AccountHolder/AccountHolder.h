@@ -193,19 +193,12 @@ public:
             std::cout << "ERROR: State cannot be empty." << std::endl;
             return false;
         }
-        // Check for invalid characters in the state name
-        for (char c : new_street_address) {
-            if (!std::isalpha(c) && !std::isspace(c)) {
-                std::cout << "ERROR: Invalid character in state name. Only letters and spaces are allowed." << std::endl;
-                return false;
-            }
-        }
-        //Optional: Check for leading/trailing whitespace or excessive spaces
+        //Check for leading/trailing whitespace or excessive spaces
         if (std::isspace(static_cast<unsigned char>(new_street_address.front())) || std::isspace(static_cast<unsigned char>(new_street_address.back()))) {
             std::cout << "ERROR: State name should not start or end with a space." << std::endl;
             return false;
         }
-        // Checking for multiple consecutive spaces (optional but good for normalization)
+        // Checking for multiple consecutive spaces
         auto it = new_street_address.find("  ");
         if (it != std::string::npos) {
             std::cout << "ERROR: State name should not contain consecutive spaces." << std::endl;
