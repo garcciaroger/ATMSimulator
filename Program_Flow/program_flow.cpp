@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 
+//Welcome and sign up/in page
 void Flow::start_up_page() {
     int option;
     std::cout << "     Welcome to ATM Simulator     " << std::endl;
@@ -31,23 +32,30 @@ void Flow::start_up_page() {
     }
 }
 
+//Sign up page
 void Flow::sign_up_option(){
-    //Creates new account class
+    // Create a new account object
     AccountHolder newAccount;
-    //Gathers customer information
+    // Gather customer information
     newAccount.gather_customer_information();
     std::cout << std::endl;
-    //Creates a bool value to verify information
+    // Print customer details to verify information
     bool valid_information = newAccount.print_customer_details();
-    //If information is incorrect, sets to false and then re-enter data
-    if(!valid_information){
+    // Create a string to hold the choice (Y/N)
+    std::string choice;
+    std::cout << "Is the following information correct? (Y/N): ";
+    std::cin >> choice;
+    // Convert choice to uppercase for uniform comparison
+    for (char &c : choice) {
+        c = std::toupper(c);
+    }
+    // If the choice is "N", ask for re-entry of data
+    if (choice == "N" || choice == "n" || choice == "No" || choice == "no") {
         std::cout << "Re-enter your information correctly" << std::endl;
         newAccount.gather_customer_information();
     }
-    //If information is correct, data is set to true
-    newAccount.print_customer_details();
-    //Create a .txt file to store customer information
-    std::string AccountFile = newAccount.get_email_address() + "_account.txt";
+    // Print customer details again for final verification
+    std::string AccountFile = newAccount.get_last_name() + newAccount.get_first_name() + "_account.txt";
     std::ofstream outFile(AccountFile);
     if(outFile.is_open()){
         outFile << "First Name - " << newAccount.get_first_name() << "\n";
@@ -60,13 +68,8 @@ void Flow::sign_up_option(){
         outFile << "Zip Code - " << newAccount.get_zip_code() << "\n";
         outFile.close();
     }
+    start_up_page();
 }
-
-
-
-
-
-
 //Login application of main menu
 void Flow::login() {
     std::string username, password;
@@ -115,7 +118,6 @@ void Flow::main_menu() {
         }
     }
 }
-
 //Deposit menu 
 int Flow::deposit_menu(){
     int option;
