@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
+#include <sqlite3.h>
+
 
 //Welcome and sign up/in page
 void Flow::start_up_page() {
@@ -34,6 +36,17 @@ void Flow::start_up_page() {
 }
 //Sign up page
 void Flow::sign_up_option(){
+    sqlite3 *db;
+    char *zErrMsg = 0;
+    int rc;
+
+    //Open DB
+    rc = sqlite3_open("account_holders.db", &db);
+    if (rc) {
+        std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
+        return;
+    }
+   
     AccountHolder* new_account = new AccountHolder();
     new_account->gather_customer_information();
     std::cout << std::endl;
@@ -44,21 +57,25 @@ void Flow::sign_up_option(){
         std::cout << "Please re-enter your information again." << std::endl;
         new_account->gather_customer_information();
     }
-    // Print customer details again for final verification
-    std::string AccountFile = new_account->get_last_name() + new_account->get_first_name() + "_account.txt";
-    std::ofstream outFile(AccountFile);
-    if(outFile.is_open()){
-        outFile << "First Name - " << new_account->get_first_name() << "\n";
-        outFile << "Last Name - " << new_account->get_last_name() << "\n";
-        outFile << "Email Address - " << new_account->get_email_address() << "\n";
-        outFile << "Phone Number - " << new_account->get_phone_number() << "\n";
-        outFile << "Street Address - " << new_account->get_street_address() << "\n";
-        outFile << "City - " << new_account->get_city() << "\n";
-        outFile << "State - " << new_account->get_state() << "\n";
-        outFile << "Zip Code - " << new_account->get_zip_code() << "\n";
-        outFile.close();
+    // Construct SQL command to insert data
+    std::string sql = "INSERT INTO AccountHolder (first_name, last_name, email_address, phone_number, street_address, city, state, zip_code) VALUES ('" +
+                      new_account->get_first_name() + "', '" + 
+                      new_account->get_last_name() + "', '" +
+                      new_account->get_email_address() + "', '" +
+                      new_account->get_phone_number() + "', '" +
+                      new_account->get_street_address() + "', '" +
+                      new_account->get_city() + "', '" +
+                      new_account->get_state() + "', '" +
+                      new_account->get_zip_code() + "');";
+    // Execute SQL statement
+    rc = sqlite3_exec(db, sql.c_str(), 0, 0, &zErrMsg);
+    if (rc != SQLITE_OK) {
+        std::cerr << "SQL error: " << zErrMsg << std::endl;
+        sqlite3_free(zErrMsg);
     }
+    //Clean up
     delete new_account;
+    sqlite3_close(db);
     start_up_page();
 }
 //Login application of main menu
