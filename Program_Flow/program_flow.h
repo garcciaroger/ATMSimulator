@@ -12,5 +12,11 @@ public:
     int withdraw_menu();
     int check_balance_menu();
     void start_program();
+
+private:
+     // Create a new account object
+    Checking checking_account;
+    Saving saving_account;
+    AccountHolder newAccount;
 };
 

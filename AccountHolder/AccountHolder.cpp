@@ -14,7 +14,7 @@ bool AccountHolder::gather_customer_information(){
     std::string state;
     std::string zip_code;
 
-    std::cout << "        New Account     " << std::endl;
+    std::cout << "\n      New Account     " << std::endl;
     std::cout << "========================" << std::endl;
 
     std::cout << "Enter First Name - "; 
@@ -78,8 +78,9 @@ bool AccountHolder::gather_customer_information(){
     return true; // Gathering successful
 }
 
+//Display customer details
 bool AccountHolder::print_customer_details(){
-    std::cout << "     Customer Details     " << std::endl;
+    std::cout << "\n   Customer Details     " << std::endl;
     std::cout << "==========================" << std::endl;
     std::cout << "First Name - " << get_first_name() << std::endl;
     std::cout << "Last Name - " << get_last_name() << std::endl;
@@ -87,4 +88,16 @@ bool AccountHolder::print_customer_details(){
     std::cout << "City - " << get_city() << std::endl; 
     std::cout << "State - " << get_state() << std::endl;
     std::cout << "Zip Code " << get_zip_code() << std::endl;
+
+    //Choice option
+    std::string choice;
+    std::cout << "Is the following information correct? (Y/N): ";
+    std::cin >> choice;
+
+    //Logic for returning true or false
+    if(choice == "Yes" || choice == "Y" || choice == "yes" || choice == "y"){
+        return true;
+    }else{
+        return false;
+    }
 }

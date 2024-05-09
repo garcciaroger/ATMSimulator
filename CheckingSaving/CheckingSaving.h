@@ -18,9 +18,9 @@ public:
     Account(std::string name, std::string acc_number, std::string rout_number, double initial_balance)
         : account_name(std::move(name)), account_number(std::move(acc_number)), routing_number(std::move(rout_number)), balance(initial_balance) {}
     //Getters
-    inline double get_balance() const {return balance;}
+    double get_balance() const {return balance;}
     //Setters
-    void set_balance(int account_balance){account_balance = balance;} 
+    void set_balance(int account_balance){balance = account_balance;} 
     //Methods
     //Validates the user amount in that there's no characters and amount less than 0
     bool validate_amount(double const amount);

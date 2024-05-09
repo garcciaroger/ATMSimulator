@@ -1,0 +1,8 @@
+First Name - Roger
+Last Name - Garcia
+Email Address - garcciaroger@gmail.com
+Phone Number - 682-717-5494
+Street Address - 2422 NW 28TH ST
+City - Fort Worth
+State - TX
+Zip Code - 76106

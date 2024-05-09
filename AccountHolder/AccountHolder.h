@@ -222,7 +222,6 @@ public:
                 return false;
             }
         }
-        //Optional: Check for leading/trailing whitespace or excessive spaces
         if (std::isspace(static_cast<unsigned char>(new_city.front())) || std::isspace(static_cast<unsigned char>(new_city.back()))) {
             std::cout << "ERROR: State name should not start or end with a space." << std::endl;
             return false;
@@ -234,7 +233,7 @@ public:
             return false;
         }
         // Assuming state is a member of the class, set its value
-        state = new_city;
+        city = new_city;
         return true;
     }
     //This will set state and test input

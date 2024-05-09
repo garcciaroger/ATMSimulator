@@ -8,6 +8,7 @@
 //Welcome and sign up/in page
 void Flow::start_up_page() {
     int option;
+    std::cout << std::endl;
     std::cout << "     Welcome to ATM Simulator     " << std::endl;
     std::cout << "==================================" << std::endl;
     std::cout << "1. Sign Up " << std::endl;
@@ -31,27 +32,15 @@ void Flow::start_up_page() {
         }
     }
 }
-
 //Sign up page
 void Flow::sign_up_option(){
-    // Create a new account object
-    AccountHolder newAccount;
-    // Gather customer information
     newAccount.gather_customer_information();
     std::cout << std::endl;
-    // Print customer details to verify information
+    // Print customer details for verification
     bool valid_information = newAccount.print_customer_details();
-    // Create a string to hold the choice (Y/N)
-    std::string choice;
-    std::cout << "Is the following information correct? (Y/N): ";
-    std::cin >> choice;
-    // Convert choice to uppercase for uniform comparison
-    for (char &c : choice) {
-        c = std::toupper(c);
-    }
-    // If the choice is "N", ask for re-entry of data
-    if (choice == "N" || choice == "n" || choice == "No" || choice == "no") {
-        std::cout << "Re-enter your information correctly" << std::endl;
+    //Re-enter information if false
+    while(!valid_information){
+        std::cout << "Please re-enter your information again." << std::endl;
         newAccount.gather_customer_information();
     }
     // Print customer details again for final verification
@@ -94,6 +83,7 @@ void Flow::login() {
 void Flow::main_menu() {
     // Implementation of main menu
     int option;
+    std::cout << std::endl;
     std::cout << "     Main Menu     " << std::endl;
     std::cout << "===================" << std::endl;
     std::cout << "1. Deposit " << std::endl;
@@ -101,7 +91,7 @@ void Flow::main_menu() {
     std::cout << "3. Check Balance" << std::endl;
     std::cout << "4. Exit " << std::endl;
     std::cout << "===================" << std::endl;
-    std::cout << "Enter Option"; std::cin >> option;
+    std::cout << "Enter Option: "; std::cin >> option;
 
     switch(option){
         case 1:{
@@ -121,52 +111,35 @@ void Flow::main_menu() {
 //Deposit menu 
 int Flow::deposit_menu(){
     int option;
+    std::cout << std::endl;
     std::cout << "    Deposit Menu   " << std::endl;
     std::cout << "===================" << std::endl;
     std::cout << "1. Checkings  " << std::endl;
     std::cout << "2. Savings " << std::endl;
     std::cout << "3. Exit " << std::endl;
     std::cout << "===================" << std::endl;
-    std::cout << "Enter Option"; std::cin >> option;
-
-    Checking checking_account;
-    Saving saving_account;
+    std::cout << "Enter Option: "; std::cin >> option;
 
     switch(option){
         //Checkings Account
         case 1: {
             double deposit_amount;
-            bool isValid = false;
-            do {
-                std::cout << "How much would you like to deposit?" << std::endl;
-                std::cin >> deposit_amount;
-                isValid = checking_account.validate_amount(deposit_amount);
-                if(!isValid) {
-                    std::cout << "Invalid deposit amount. Please enter a valid amount." << std::endl;
-                }
-            } while (!isValid);
+            std::cout << "How much would you like to deposit to checkings? - $";
+            std::cin >> deposit_amount;
+            std::cout << std::endl;
             // Deposit the amount into the account
-            double total_balance = checking_account.deposit(deposit_amount) + checking_account.get_balance();
-            checking_account.set_balance(total_balance);
+            checking_account.deposit(deposit_amount);
             main_menu();
             break;
         }
         //Savings Account
         case 2:{
             double deposit_amount;
-            bool isValid = false;
-            do {
-                std::cout << "How much would you like to deposit?" << std::endl;
-                std::cin >> deposit_amount;
-                isValid = saving_account.validate_amount(deposit_amount);
-
-                if (!isValid) {
-                    std::cout << "Invalid deposit amount. Please enter a valid amount." << std::endl;
-                }
-            } while (!isValid);
+            std::cout << "How much would you like to deposit to savings? - $";
+            std::cin >> deposit_amount;
+            std::cout << std::endl;
             // Deposit the amount into the account
-            double total_balance = saving_account.deposit(deposit_amount) + saving_account.get_balance();
-            saving_account.set_balance(total_balance);
+            saving_account.deposit(deposit_amount);
             main_menu();
             break;
         }
@@ -180,53 +153,36 @@ int Flow::deposit_menu(){
 //Withdraw menu 
 int Flow::withdraw_menu(){
     int option;
-    std::cout << "    Withdraw Menu   " << std::endl;
+    std::cout << std::endl;
+    std::cout << "   Withdraw Menu   " << std::endl;
     std::cout << "===================" << std::endl;
     std::cout << "1. Checkings  " << std::endl;
     std::cout << "2. Savings " << std::endl;
     std::cout << "3. Exit " << std::endl;
     std::cout << "===================" << std::endl;
-    std::cout << "Enter Option"; std::cin >> option;
-
-    Checking checking_account;
-    Saving saving_account;
+    std::cout << "Enter Option: "; std::cin >> option;
 
     switch(option){
         //Checkings Account
         case 1: {
             double withdraw_amount;
-            bool isValid = false;
-            do {
-                std::cout << "How much would you like to deposit?" << std::endl;
-                std::cin >> withdraw_amount;
-                isValid = checking_account.validate_amount(withdraw_amount);
-                if (!isValid) {
-                    std::cout << "Invalid withdraw amount. Please enter a valid amount." << std::endl;
-                }
-            } while (!isValid);
-            // Withdraw the amount into the account
-            double total_balance = checking_account.withdraw(withdraw_amount) - checking_account.get_balance();
-            checking_account.set_balance(total_balance);
+            std::cout << "How much would you like to withdraw from checkings? - $";
+            std::cin >> withdraw_amount;
+            std::cout << std::endl;
+            // Deposit the amount into the account
+            checking_account.withdraw(withdraw_amount);
             main_menu();
             break;
         }
         //Savings Account
         case 2:{
             double withdraw_amount;
-            bool isValid = false;
-            do {
-                std::cout << "How much would you like to withdraw?" << std::endl;
-                std::cin >> withdraw_amount;
-                isValid = saving_account.validate_amount(withdraw_amount);
-                if (!isValid) {
-                    std::cout << "Invalid deposit amount. Please enter a valid amount." << std::endl;
-                }
-            } while (!isValid);
-            // Withdraw the amount into the account
-            double total_balance = saving_account.withdraw(withdraw_amount) - saving_account.get_balance();
-            saving_account.set_balance(total_balance);
+            std::cout << "How much would you like to withdraw from savings? - $";
+            std::cin >> withdraw_amount;
+            std::cout << std::endl;
+            // Deposit the amount into the account
+            saving_account.withdraw(withdraw_amount);
             main_menu();
-            break;
         }
         //Exit from program
         case 3:{
@@ -238,32 +194,40 @@ int Flow::withdraw_menu(){
 //Check balance for menu
 int Flow::check_balance_menu(){
     int option;
+    std::cout << std::endl;
     std::cout << "   Check Balance   " << std::endl;
     std::cout << "===================" << std::endl;
     std::cout << "1. Checkings  " << std::endl;
     std::cout << "2. Savings " << std::endl;
-    std::cout << "3. Exit " << std::endl;
+    std::cout << "3. Both Accounts " << std::endl;
+    std::cout << "4. Exit " << std::endl;
     std::cout << "===================" << std::endl;
-    std::cout << "Enter Option"; std::cin >> option;
-
-    Checking checking_account;
-    Saving saving_account;
+    std::cout << "Enter Option: "; std::cin >> option;
 
     switch(option){
         //Checkings Account
         case 1:{
             std::cout << "Checkings Account Balance - $" << checking_account.get_balance();
+            std::cout << std::endl;
             main_menu();
             break;
         }
         //Savings Account
         case 2:{
-            std::cout << "Savings Account Balance - $" << checking_account.get_balance();
+            std::cout << "Savings Account Balance - $" << saving_account.get_balance();
+            std::cout << std::endl;
             main_menu();
             break;
         }
         //Exit Function
         case 3:{
+            std::cout << "Checkings Account Balance - $" << checking_account.get_balance() << std::endl;
+            std::cout << "Savings Account Balance - $" << saving_account.get_balance() << std::endl;
+            std::cout << std::endl;
+            main_menu();
+            break;
+        }
+        case 4:{
             exit(0);
         }
     }
