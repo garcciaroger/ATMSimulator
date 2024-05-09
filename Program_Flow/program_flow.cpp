@@ -34,29 +34,31 @@ void Flow::start_up_page() {
 }
 //Sign up page
 void Flow::sign_up_option(){
-    newAccount.gather_customer_information();
+    AccountHolder* new_account = new AccountHolder();
+    new_account->gather_customer_information();
     std::cout << std::endl;
     // Print customer details for verification
-    bool valid_information = newAccount.print_customer_details();
+    bool valid_information = new_account->print_customer_details();
     //Re-enter information if false
     while(!valid_information){
         std::cout << "Please re-enter your information again." << std::endl;
-        newAccount.gather_customer_information();
+        new_account->gather_customer_information();
     }
     // Print customer details again for final verification
-    std::string AccountFile = newAccount.get_last_name() + newAccount.get_first_name() + "_account.txt";
+    std::string AccountFile = new_account->get_last_name() + new_account->get_first_name() + "_account.txt";
     std::ofstream outFile(AccountFile);
     if(outFile.is_open()){
-        outFile << "First Name - " << newAccount.get_first_name() << "\n";
-        outFile << "Last Name - " << newAccount.get_last_name() << "\n";
-        outFile << "Email Address - " << newAccount.get_email_address() << "\n";
-        outFile << "Phone Number - " << newAccount.get_phone_number() << "\n";
-        outFile << "Street Address - " << newAccount.get_street_address() << "\n";
-        outFile << "City - " << newAccount.get_city() << "\n";
-        outFile << "State - " << newAccount.get_state() << "\n";
-        outFile << "Zip Code - " << newAccount.get_zip_code() << "\n";
+        outFile << "First Name - " << new_account->get_first_name() << "\n";
+        outFile << "Last Name - " << new_account->get_last_name() << "\n";
+        outFile << "Email Address - " << new_account->get_email_address() << "\n";
+        outFile << "Phone Number - " << new_account->get_phone_number() << "\n";
+        outFile << "Street Address - " << new_account->get_street_address() << "\n";
+        outFile << "City - " << new_account->get_city() << "\n";
+        outFile << "State - " << new_account->get_state() << "\n";
+        outFile << "Zip Code - " << new_account->get_zip_code() << "\n";
         outFile.close();
     }
+    delete new_account;
     start_up_page();
 }
 //Login application of main menu
