@@ -3,7 +3,6 @@
 /*
     THE FUNCTION BELOW TESTS set_first_name()
 */
-
 class AccountHolderTest : public ::testing::Test {
 protected:
     AccountHolder holder; // AccountHolder instance for use in all tests

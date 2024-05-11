@@ -17,21 +17,21 @@ public:
     //Default Constructor
     AccountHolder() = default;
     //Getters
-    inline std::string get_first_name() const {return first_name;}
+    std::string get_first_name() const {return first_name;}
     // Returns the last name of the account owner
-    inline const std::string& get_last_name() const noexcept { return last_name; }
+    const std::string& get_last_name() const noexcept { return last_name; }
     // Returns the email address of the account owner
-    inline const std::string& get_email_address() const noexcept { return email_address; }
+    const std::string& get_email_address() const noexcept { return email_address; }
     // Returns the phone number of the account owner
-    inline const std::string& get_phone_number() const noexcept { return phone_number; }
+    const std::string& get_phone_number() const noexcept { return phone_number; }
     // Returns the street address of the account owner
-    inline const std::string& get_street_address() const noexcept { return street_address; }
+    const std::string& get_street_address() const noexcept { return street_address; }
     // Returns the city of the account owner
-    inline const std::string& get_city() const noexcept { return city; }
+    const std::string& get_city() const noexcept { return city; }
     // Returns the state of the account owner
-    inline const std::string& get_state() const noexcept { return state; }
+    const std::string& get_state() const noexcept { return state; }
     // Returns the zip code of the account owner
-    inline const std::string& get_zip_code() const noexcept { return zip_code; }
+    const std::string& get_zip_code() const noexcept { return zip_code; }
 
     //Default Initllization
     explicit AccountHolder(std::string fn, std::string ln, std::string email, std::string phone,
@@ -291,4 +291,6 @@ public:
     //Method
     bool gather_customer_information();
     bool print_customer_details();
+    bool verify_customer_details();
+    void customer_details();
 };
