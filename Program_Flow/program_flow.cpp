@@ -39,14 +39,12 @@ void Flow::sign_up_option(){
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
-
     //Open DB
     rc = sqlite3_open("account_holders.db", &db);
     if (rc) {
         std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
         return;
     }
-   
     AccountHolder* new_account = new AccountHolder();
     new_account->gather_customer_information();
     std::cout << std::endl;
@@ -248,6 +246,12 @@ int Flow::check_balance_menu(){
         }
         case 4:{
             exit(0);
+            break;
+        }
+        default:{
+            std::cout << "Invalid Option, Try Again." << std::endl;
+            check_balance_menu();
+            break;
         }
     }
 }
