@@ -39,6 +39,7 @@ bool AccountHolder::gather_customer_information(){
     std::getline(std::cin,customer_information->email_address);
     if(!set_email_address(customer_information->email_address)){
         std::cout << "Invalid Email Address! " << std::endl;
+        delete customer_information;
         return false;
     }
     std::cout << "Enter Phone Number - "; 

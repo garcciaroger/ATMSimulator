@@ -9,13 +9,14 @@ public:
     void main_menu();
     void sign_up_option();
     int deposit_menu();
-    int withdraw_menu();
-    int check_balance_menu();
+    void withdraw_menu();
+    void check_balance_menu();
     void start_program();
-
+    void clear_input();
 private:
      // Create a new account object
     Checking checking_account;
     Saving saving_account;
+    int get_option();
 };
 
