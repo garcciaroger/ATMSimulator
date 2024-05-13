@@ -1,4 +1,6 @@
-First Name - Roger
+Username - garcciaroger
+Password - 23456
+First Name - oger
 Last Name - Garcia
 Email Address - garcciaroger@gmail.com
 Phone Number - 682-717-5494

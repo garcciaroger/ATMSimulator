@@ -1,6 +1,8 @@
 #pragma once
 #include "AccountHolder.h"
 #include "CheckingSaving.h"
+#include <unordered_map>
+#include <string>
 
 class Flow {
 public:
@@ -13,11 +15,16 @@ public:
     void check_balance_menu();
     void start_program();
     void clear_input();
+    ~Flow(){
+        for (auto& pair : accounts) {
+            delete pair.second; // Properly deallocate memory for each account
+        }
+    }
+
 private:
-     // Create a new account object
     Checking checking_account;
     Saving saving_account;
     AccountHolder newAccount;
+    std::unordered_map<std::string, AccountHolder*> accounts; // Hash table to store accounts
     int get_option();
 };
-

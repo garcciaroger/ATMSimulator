@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
+#include <unordered_map>
 #include <sqlite3.h>
 
 int Flow::get_option(){
@@ -50,59 +51,68 @@ void Flow::start_up_page() {
 }
 //Sign up page
 void Flow::sign_up_option(){
-    // Create a new account object
-    AccountHolder newAccount;
-    // Gather customer information
-    newAccount.gather_customer_information();
-    std::cout << std::endl;
-    // Print customer details to verify information
-    bool valid_information = newAccount.print_customer_details();
-    // Create a string to hold the choice (Y/N)
-    std::string choice;
-    std::cout << "Is the following information correct? (Y/N): ";
-    std::cin >> choice;
-    // Convert choice to uppercase for uniform comparison
-    for (char &c : choice) {
-        c = std::toupper(c);
-    }
-    // If the choice is "N", ask for re-entry of data
-    if (choice == "N" || choice == "n" || choice == "No" || choice == "no") {
-        std::cout << "Re-enter your information correctly" << std::endl;
-        newAccount.gather_customer_information();
-    }
-    // Print customer details again for final verification
-    std::string AccountFile = newAccount.get_last_name() + newAccount.get_first_name() + "_account.txt";
-    std::ofstream outFile(AccountFile);
-    if(outFile.is_open()){
-        outFile << "First Name - " << newAccount.get_first_name() << "\n";
-        outFile << "Last Name - " << newAccount.get_last_name() << "\n";
-        outFile << "Email Address - " << newAccount.get_email_address() << "\n";
-        outFile << "Phone Number - " << newAccount.get_phone_number() << "\n";
-        outFile << "Street Address - " << newAccount.get_street_address() << "\n";
-        outFile << "City - " << newAccount.get_city() << "\n";
-        outFile << "State - " << newAccount.get_state() << "\n";
-        outFile << "Zip Code - " << newAccount.get_zip_code() << "\n";
-        outFile.close();
-    }
+   std::string continue_choice;
+    do {
+        AccountHolder* newAccount = new AccountHolder;
+        std::string choice;
+        do {
+            newAccount->gather_customer_information();
+            std::cout << std::endl;
+            newAccount->verify_customer_details();
+            std::cout << "Is the following information correct? (Y/N): ";
+            std::cin >> choice;
+            for (char &c : choice) {
+                c = std::toupper(c);
+            }
+        } while (choice != "Y");
+
+        std::string email = newAccount->get_email_address();
+        accounts[email] = newAccount;
+
+        std::string accountFile = newAccount->get_last_name() + newAccount->get_first_name() + "_account.txt";
+        std::ofstream outFile(accountFile);
+        if (outFile.is_open()) {
+            outFile << "Username - " << newAccount->get_username() << "\n";
+            outFile << "Password - " << newAccount->get_password() << "\n";
+            outFile << "First Name - " << newAccount->get_first_name() << "\n";
+            outFile << "Last Name - " << newAccount->get_last_name() << "\n";
+            outFile << "Email Address - " << newAccount->get_email_address() << "\n";
+            outFile << "Phone Number - " << newAccount->get_phone_number() << "\n";
+            outFile << "Street Address - " << newAccount->get_street_address() << "\n";
+            outFile << "City - " << newAccount->get_city() << "\n";
+            outFile << "State - " << newAccount->get_state() << "\n";
+            outFile << "Zip Code - " << newAccount->get_zip_code() << "\n";
+            outFile.close();
+        }
+        std::cout << "Do you want to create another account? (Y/N): ";
+        std::cin >> continue_choice;
+        for (char &c : continue_choice) {
+            c = std::toupper(c);
+        }
+    } while (continue_choice == "Y");
     start_up_page();
 }
 //Login application of main menu
 void Flow::login() {
     std::string username, password;
     // Prompt for username and password
-    std::cout << "Enter username: ";
+    std::cout << "Enter username (email): ";
     std::cin >> username;
     std::cout << "Enter password: ";
     std::cin >> password;
-    // Hardcoded credentials for the example
-    const std::string storedUsername = "admin";
-    const std::string storedPassword = "password123";
-    // Check if the entered credentials match the stored credentials
-    if (username == storedUsername && password == storedPassword) {
-        std::cout << "Login successful!" << std::endl;
-        main_menu();
+    // Check if the user exists in the accounts hash table
+    auto it = accounts.find(username);
+    if (it != accounts.end()) {
+        AccountHolder* userAccount = it->second;
+        // Validate the password (assuming AccountHolder has a method get_password)
+        if (userAccount->get_password() == password) {
+            std::cout << "Login successful!" << std::endl;
+            main_menu();
+        } else {
+            std::cout << "Login failed: Incorrect password." << std::endl;
+        }
     } else {
-        std::cout << "Login failed: Incorrect username or password." << std::endl;
+        std::cout << "Login failed: Username not found." << std::endl;
     }
 }
 //Main menu of the application

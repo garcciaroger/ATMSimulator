@@ -4,7 +4,7 @@
 #include "Program_Flow/program_flow.h"
 
 int main(){
-    Flow start;
-    start.start_up_page();
+    Flow startProgram;
+    startProgram.start_up_page();
 }
 

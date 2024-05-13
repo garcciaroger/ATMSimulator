@@ -5,6 +5,8 @@
 
 class AccountHolder{
 private:
+    std::string username;
+    std::string password;
     std::string first_name;
     std::string last_name;
     std::string email_address;
@@ -17,6 +19,8 @@ public:
     //Default Constructor
     AccountHolder() = default;
     //Getters
+    std::string get_username() const {return username;}
+    std::string get_password() const {return password;}
     std::string get_first_name() const {return first_name;}
     // Returns the last name of the account owner
     const std::string& get_last_name() const noexcept { return last_name; }
@@ -41,6 +45,14 @@ public:
               city(std::move(city)), state(std::move(state)), zip_code(std::move(zip)) {}
 
     //Setters
+    bool set_usernames(std::string new_username){
+        username = new_username;
+        return true;
+    }
+    bool set_password(std::string new_password){
+        password = new_password;
+        return true;
+    }
     //This function will get the users first name and check to see if it meets requirements
     bool set_first_name(const std::string& new_firstName) {
         // Maximum length of first name

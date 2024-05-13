@@ -6,6 +6,8 @@
 
 bool AccountHolder::gather_customer_information(){
     struct Customer{
+        std::string username;
+        std::string password;
         std::string first_name;
         std::string last_name;
         std::string email_address;
@@ -20,6 +22,22 @@ bool AccountHolder::gather_customer_information(){
 
     std::cout << "\n      New Account     " << std::endl;
     std::cout << "========================" << std::endl;
+    std::cout << "Create Username - "; 
+    std::cin.ignore(); // Clear any remaining newline characters
+    std::getline(std::cin,customer_information->username);
+    if (!set_usernames(customer_information->username)) {
+        std::cerr << "Invalid first name!" << std::endl;
+        delete customer_information;
+        return false; // Gathering failed
+    }
+    std::cout << "Create Password - "; 
+    std::cin.ignore(); // Clear any remaining newline characters
+    std::getline(std::cin,customer_information->password);
+    if (!set_password(customer_information->password)) {
+        std::cerr << "Invalid first name!" << std::endl;
+        delete customer_information;
+        return false; // Gathering failed
+    }
     std::cout << "Enter First Name - "; 
     std::cin.ignore(); // Clear any remaining newline characters
     std::getline(std::cin,customer_information->first_name);
@@ -85,6 +103,8 @@ bool AccountHolder::gather_customer_information(){
 bool AccountHolder::verify_customer_details(){
     std::cout << "\n   Customer Details     " << std::endl;
     std::cout << "==========================" << std::endl;
+    std::cout << "Username - " << get_username() << std::endl;
+    std::cout << "Password - " << get_password() << std::endl;
     std::cout << "First Name - " << get_first_name() << std::endl;
     std::cout << "Last Name - " << get_last_name() << std::endl;
     std::cout << "Email Address - " << get_email_address() << std::endl;
@@ -108,6 +128,7 @@ bool AccountHolder::verify_customer_details(){
 void AccountHolder::customer_details(){
     std::cout << "\n   Customer Details     " << std::endl;
     std::cout << "==========================" << std::endl;
+    std::cout << "Username - " << get_username() << std::endl;
     std::cout << "First Name - " << get_first_name() << std::endl;
     std::cout << "Last Name - " << get_last_name() << std::endl;
     std::cout << "Email Address - " << get_email_address() << std::endl;
