@@ -17,6 +17,7 @@ private:
      // Create a new account object
     Checking checking_account;
     Saving saving_account;
+    AccountHolder newAccount;
     int get_option();
 };
 

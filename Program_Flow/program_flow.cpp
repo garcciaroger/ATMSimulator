@@ -15,7 +15,6 @@ int Flow::get_option(){
     }
     return option;
 }
-
 //Welcome and sign up/in page
 void Flow::start_up_page() {
     int option = 0;
@@ -27,7 +26,7 @@ void Flow::start_up_page() {
         std::cout << "2. Log In " << std::endl;
         std::cout << "3. Exit " << std::endl;
         std::cout << "==================================" << std::endl;
-        std::cout << "Enter Option: "; std::cin >> option;
+        std::cout << "Enter Option: ";
         option = get_option();
 
         switch(option){
@@ -51,45 +50,41 @@ void Flow::start_up_page() {
 }
 //Sign up page
 void Flow::sign_up_option(){
-    // sqlite3 *db;
-    // char *zErrMsg = 0;
-    // int rc;
-    // //Open DB
-    // rc = sqlite3_open("account_holders.db", &db);
-    // if (rc) {
-    //     std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
-    //     return;
-    // }
-    // AccountHolder* new_account = new AccountHolder();
-    // new_account->gather_customer_information();
-    // std::cout << std::endl;
-    // // Print customer details for verification
-    // bool valid_information = new_account->verify_customer_details();
-    // //Re-enter information if false
-    // while(!valid_information){
-    //     std::cout << "Please re-enter your information again." << std::endl;
-    //     new_account->gather_customer_information();
-    // }
-    // // Construct SQL command to insert data
-    // std::string sql = "INSERT INTO AccountHolder (first_name, last_name, email_address, phone_number, street_address, city, state, zip_code) VALUES ('" +
-    //                   new_account->get_first_name() + "', '" + 
-    //                   new_account->get_last_name() + "', '" +
-    //                   new_account->get_email_address() + "', '" +
-    //                   new_account->get_phone_number() + "', '" +
-    //                   new_account->get_street_address() + "', '" +
-    //                   new_account->get_city() + "', '" +
-    //                   new_account->get_state() + "', '" +
-    //                   new_account->get_zip_code() + "');";
-    // // Execute SQL statement
-    // rc = sqlite3_exec(db, sql.c_str(), 0, 0, &zErrMsg);
-    // if (rc != SQLITE_OK) {
-    //     std::cerr << "SQL error: " << zErrMsg << std::endl;
-    //     sqlite3_free(zErrMsg);
-    // }
-    // //Clean up
-    // delete new_account;
-    // sqlite3_close(db);
-    // start_up_page();
+    // Create a new account object
+    AccountHolder newAccount;
+    // Gather customer information
+    newAccount.gather_customer_information();
+    std::cout << std::endl;
+    // Print customer details to verify information
+    bool valid_information = newAccount.print_customer_details();
+    // Create a string to hold the choice (Y/N)
+    std::string choice;
+    std::cout << "Is the following information correct? (Y/N): ";
+    std::cin >> choice;
+    // Convert choice to uppercase for uniform comparison
+    for (char &c : choice) {
+        c = std::toupper(c);
+    }
+    // If the choice is "N", ask for re-entry of data
+    if (choice == "N" || choice == "n" || choice == "No" || choice == "no") {
+        std::cout << "Re-enter your information correctly" << std::endl;
+        newAccount.gather_customer_information();
+    }
+    // Print customer details again for final verification
+    std::string AccountFile = newAccount.get_last_name() + newAccount.get_first_name() + "_account.txt";
+    std::ofstream outFile(AccountFile);
+    if(outFile.is_open()){
+        outFile << "First Name - " << newAccount.get_first_name() << "\n";
+        outFile << "Last Name - " << newAccount.get_last_name() << "\n";
+        outFile << "Email Address - " << newAccount.get_email_address() << "\n";
+        outFile << "Phone Number - " << newAccount.get_phone_number() << "\n";
+        outFile << "Street Address - " << newAccount.get_street_address() << "\n";
+        outFile << "City - " << newAccount.get_city() << "\n";
+        outFile << "State - " << newAccount.get_state() << "\n";
+        outFile << "Zip Code - " << newAccount.get_zip_code() << "\n";
+        outFile.close();
+    }
+    start_up_page();
 }
 //Login application of main menu
 void Flow::login() {
@@ -157,7 +152,7 @@ int Flow::deposit_menu(){
         std::cout << "2. Savings " << std::endl;
         std::cout << "3. Exit " << std::endl;
         std::cout << "===================" << std::endl;
-        std::cout << "Enter Option: "; std::cin >> option;
+        std::cout << "Enter Option: ";
         option = get_option();
 
         double deposit_amount;
