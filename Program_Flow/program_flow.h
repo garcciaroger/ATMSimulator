@@ -3,6 +3,7 @@
 #include "CheckingSaving.h"
 #include <unordered_map>
 #include <string>
+#include <algorithm>  // Include for std::isspace and std::find_if
 
 class Flow {
 public:
@@ -15,9 +16,9 @@ public:
     void check_balance_menu();
     void start_program();
     void clear_input();
-    ~Flow(){
+    ~Flow() {
         for (auto& pair : accounts) {
-            delete pair.second; // Properly deallocate memory for each account
+            delete pair.second;  // Properly deallocate memory for each account
         }
     }
 
@@ -25,6 +26,18 @@ private:
     Checking checking_account;
     Saving saving_account;
     AccountHolder newAccount;
-    std::unordered_map<std::string, AccountHolder*> accounts; // Hash table to store accounts
+    std::unordered_map<std::string, AccountHolder*> accounts;  // Hash table to store accounts
     int get_option();
+
+    // Private static helper function to trim whitespace
+    static std::string trim(const std::string& str) {
+        auto start = std::find_if_not(str.begin(), str.end(), [](unsigned char ch) {
+            return std::isspace(ch);
+        });
+        auto end = std::find_if_not(str.rbegin(), str.rend(), [](unsigned char ch) {
+            return std::isspace(ch);
+        }).base();
+        
+        return (start < end ? std::string(start, end) : "");
+    }
 };

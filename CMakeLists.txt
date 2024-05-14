@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add the main application executable
-add_executable(ATMsim main.cpp AccountHolder/AccountHolder.cpp CheckingSaving/CheckingSaving.cpp Program_Flow/program_flow.cpp)
+add_executable(ATMsim main.cpp AccountHolder/AccountHolder.cpp CheckingSaving/CheckingSaving.cpp Program_Flow/program_flow.cpp Program_Flow/supporting_functions.cpp)
 
 # Specify include directories for the main executable
 target_include_directories(ATMsim PRIVATE ${CMAKE_SOURCE_DIR}/AccountHolder ${CMAKE_SOURCE_DIR}/CheckingSaving ${CMAKE_SOURCE_DIR}/Program_Flow)

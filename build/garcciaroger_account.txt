@@ -1,0 +1,10 @@
+Username - garcciaroger
+Password - 1234
+First Name - Roger
+Last Name - Garcia
+Email Address - roger@gmail.com
+Phone Number - 682-717-5494
+Street Address - 2422 NE 29TH ST
+City - Dallas
+State - TX
+Zip Code - 76016

@@ -2,10 +2,11 @@
 #include<iostream>
 #include<cctype>
 #include<string>
+#include <memory>
 #include"AccountHolder.h"
-
-bool AccountHolder::gather_customer_information(){
-    struct Customer{
+bool AccountHolder::gather_customer_information() {
+    // Define Customer structure locally
+    struct Customer {
         std::string username;
         std::string password;
         std::string first_name;
@@ -17,87 +18,87 @@ bool AccountHolder::gather_customer_information(){
         std::string state;
         std::string zip_code;
     };
-    //Dynamically create customer class
-    Customer* customer_information = new Customer();
+
+    Customer customer_information; // Local variable
 
     std::cout << "\n      New Account     " << std::endl;
     std::cout << "========================" << std::endl;
-    std::cout << "Create Username - "; 
-    std::cin.ignore(); // Clear any remaining newline characters
-    std::getline(std::cin,customer_information->username);
-    if (!set_usernames(customer_information->username)) {
-        std::cerr << "Invalid first name!" << std::endl;
-        delete customer_information;
-        return false; // Gathering failed
-    }
-    std::cout << "Create Password - "; 
-    std::cin.ignore(); // Clear any remaining newline characters
-    std::getline(std::cin,customer_information->password);
-    if (!set_password(customer_information->password)) {
-        std::cerr << "Invalid first name!" << std::endl;
-        delete customer_information;
-        return false; // Gathering failed
-    }
-    std::cout << "Enter First Name - "; 
-    std::cin.ignore(); // Clear any remaining newline characters
-    std::getline(std::cin,customer_information->first_name);
-    if (!set_first_name(customer_information->first_name)) {
-        std::cerr << "Invalid first name!" << std::endl;
-        delete customer_information;
-        return false; // Gathering failed
-    }
-    std::cout << "Enter Last Name - ";
-    std::getline(std::cin,customer_information->last_name);
-    if (!set_last_name(customer_information->last_name)) {
-        std::cerr << "Invalid last name!" << std::endl;
-        delete customer_information;
-        return false; // Gathering failed
-    }
-    std::cout << "Enter your Email Address - ";
-    std::getline(std::cin,customer_information->email_address);
-    if(!set_email_address(customer_information->email_address)){
-        std::cout << "Invalid Email Address! " << std::endl;
-        delete customer_information;
+
+    // Clear the input buffer before taking new input to avoid skipping input fields
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore any leftover newline character
+
+    std::cout << "Create Username: ";
+    std::getline(std::cin, customer_information.username);
+    if (!set_usernames(customer_information.username)) {
+        std::cerr << "Invalid username!" << std::endl;
         return false;
     }
-    std::cout << "Enter Phone Number - "; 
-    std::getline(std::cin,customer_information->phone_number);
-    if (!set_phone_number(customer_information->phone_number)) {
+
+    std::cout << "Create Password: ";
+    std::getline(std::cin, customer_information.password);
+    if (!set_password(customer_information.password)) {
+        std::cerr << "Invalid password!" << std::endl;
+        return false;
+    }
+
+    std::cout << "Enter First Name: ";
+    std::getline(std::cin, customer_information.first_name);
+    if (!set_first_name(customer_information.first_name)) {
+        std::cerr << "Invalid first name!" << std::endl;
+        return false;
+    }
+
+    std::cout << "Enter Last Name: ";
+    std::getline(std::cin, customer_information.last_name);
+    if (!set_last_name(customer_information.last_name)) {
+        std::cerr << "Invalid last name!" << std::endl;
+        return false;
+    }
+
+    std::cout << "Enter your Email Address: ";
+    std::getline(std::cin, customer_information.email_address);
+    if (!set_email_address(customer_information.email_address)) {
+        std::cerr << "Invalid email address!" << std::endl;
+        return false;
+    }
+
+    std::cout << "Enter Phone Number: ";
+    std::getline(std::cin, customer_information.phone_number);
+    if (!set_phone_number(customer_information.phone_number)) {
         std::cerr << "Invalid phone number!" << std::endl;
-        delete customer_information;
-        return false; // Gathering failed
+        return false;
     }
-    std::cout << "Enter Street Address - "; 
-    std::getline(std::cin,customer_information->street_address);
-    if (!set_street_address(customer_information->street_address)) {
+
+    std::cout << "Enter Street Address: ";
+    std::getline(std::cin, customer_information.street_address);
+    if (!set_street_address(customer_information.street_address)) {
         std::cerr << "Invalid street address!" << std::endl;
-        delete customer_information;
-        return false; // Gathering failed
+        return false;
     }
-    std::cout << "Enter City - "; 
-    std::getline(std::cin,customer_information->city);
-    if (!set_city(customer_information->city)) {
+
+    std::cout << "Enter City: ";
+    std::getline(std::cin, customer_information.city);
+    if (!set_city(customer_information.city)) {
         std::cerr << "Invalid city!" << std::endl;
-        delete customer_information;
-        return false; // Gathering failed
+        return false;
     }
-    std::cout << "Enter State - "; 
-    std::getline(std::cin,customer_information->state);
-    if (!set_state(customer_information->state)) {
+
+    std::cout << "Enter State: ";
+    std::getline(std::cin, customer_information.state);
+    if (!set_state(customer_information.state)) {
         std::cerr << "Invalid state!" << std::endl;
-        delete customer_information;
-        return false; // Gathering failed
+        return false;
     }
-    std::cout << "Enter Zip Code - "; 
-    std::getline(std::cin,customer_information->zip_code);
-    if (!set_zip_code(customer_information->zip_code)) {
+
+    std::cout << "Enter Zip Code: ";
+    std::getline(std::cin, customer_information.zip_code);
+    if (!set_zip_code(customer_information.zip_code)) {
         std::cerr << "Invalid zip code!" << std::endl;
-        delete customer_information;
-        return false; // Gathering failed
+        return false;
     }
-    std::cout << std::endl;
-    delete customer_information;
-    return true; // Gathering successful
+
+    std::cout << "Information successfully gathered and validated." << std::endl;
+    return true; // Information successfully gathered and validated
 }
 //Verify customer details
 bool AccountHolder::verify_customer_details(){

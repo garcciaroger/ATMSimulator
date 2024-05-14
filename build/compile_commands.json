@@ -25,6 +25,12 @@
 },
 {
   "directory": "/Users/rogergarcia/Desktop/ATMSimulator/build",
+  "command": "/usr/bin/clang++  -I/Users/rogergarcia/Desktop/ATMSimulator/AccountHolder -I/Users/rogergarcia/Desktop/ATMSimulator/CheckingSaving -I/Users/rogergarcia/Desktop/ATMSimulator/Program_Flow -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/ATMsim.dir/Program_Flow/supporting_functions.cpp.o -c /Users/rogergarcia/Desktop/ATMSimulator/Program_Flow/supporting_functions.cpp",
+  "file": "/Users/rogergarcia/Desktop/ATMSimulator/Program_Flow/supporting_functions.cpp",
+  "output": "CMakeFiles/ATMsim.dir/Program_Flow/supporting_functions.cpp.o"
+},
+{
+  "directory": "/Users/rogergarcia/Desktop/ATMSimulator/build",
   "command": "/usr/bin/clang++  -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/test_account.dir/AccountHolder/AccountHolder_test.cpp.o -c /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder_test.cpp",
   "file": "/Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder_test.cpp",
   "output": "CMakeFiles/test_account.dir/AccountHolder/AccountHolder_test.cpp.o"

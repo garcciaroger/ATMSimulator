@@ -5,7 +5,6 @@
 #include <fstream>
 #include <string>
 #include <unordered_map>
-#include <sqlite3.h>
 
 int Flow::get_option(){
     int option;
@@ -50,26 +49,26 @@ void Flow::start_up_page() {
     }
 }
 //Sign up page
-void Flow::sign_up_option(){
-   std::string continue_choice;
+void Flow::sign_up_option() {
+    std::string continue_choice;
     do {
+        // Create a new account holder
         AccountHolder* newAccount = new AccountHolder;
-        std::string choice;
+        bool isInformationCorrect = false;
         do {
-            newAccount->gather_customer_information();
-            std::cout << std::endl;
-            newAccount->verify_customer_details();
-            std::cout << "Is the following information correct? (Y/N): ";
-            std::cin >> choice;
-            for (char &c : choice) {
-                c = std::toupper(c);
+            // Gather customer information
+            if (newAccount->gather_customer_information()) {
+                // Verify customer details
+                isInformationCorrect = newAccount->verify_customer_details();
+                if (!isInformationCorrect) {
+                    std::cout << "Information incorrect. Please re-enter your details." << std::endl;
+                }
+            } else {
+                std::cout << "Error gathering customer information. Please try again." << std::endl;
             }
-        } while (choice != "Y");
-
-        std::string email = newAccount->get_email_address();
-        accounts[email] = newAccount;
-
-        std::string accountFile = newAccount->get_last_name() + newAccount->get_first_name() + "_account.txt";
+        } while (!isInformationCorrect);
+        // Create a file with account details
+        std::string accountFile = newAccount->get_username() + "_account.txt";
         std::ofstream outFile(accountFile);
         if (outFile.is_open()) {
             outFile << "Username - " << newAccount->get_username() << "\n";
@@ -83,36 +82,53 @@ void Flow::sign_up_option(){
             outFile << "State - " << newAccount->get_state() << "\n";
             outFile << "Zip Code - " << newAccount->get_zip_code() << "\n";
             outFile.close();
+        } else {
+            std::cerr << "Error opening file: " << accountFile << std::endl;
         }
+        // Delete the dynamically allocated account holder to free memory
+        delete newAccount;
+        // Ask user if they want to create another account
         std::cout << "Do you want to create another account? (Y/N): ";
         std::cin >> continue_choice;
         for (char &c : continue_choice) {
             c = std::toupper(c);
         }
     } while (continue_choice == "Y");
+    // Redirect to start up page
     start_up_page();
 }
 //Login application of main menu
 void Flow::login() {
     std::string username, password;
-    // Prompt for username and password
-    std::cout << "Enter username (email): ";
-    std::cin >> username;
+    std::cout << "Enter username: ";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::getline(std::cin, username);
     std::cout << "Enter password: ";
-    std::cin >> password;
-    // Check if the user exists in the accounts hash table
-    auto it = accounts.find(username);
-    if (it != accounts.end()) {
-        AccountHolder* userAccount = it->second;
-        // Validate the password (assuming AccountHolder has a method get_password)
-        if (userAccount->get_password() == password) {
-            std::cout << "Login successful!" << std::endl;
-            main_menu();
-        } else {
-            std::cout << "Login failed: Incorrect password." << std::endl;
-        }
-    } else {
+    std::getline(std::cin, password);
+    // Construct the filename from the username
+    std::string accountFile = username + "_account.txt";
+    // Open the file and read the stored username and password
+    std::ifstream inFile(accountFile);
+    if (!inFile.is_open()) {
         std::cout << "Login failed: Username not found." << std::endl;
+        return;
+    }
+    std::string fileUsername, filePassword;
+    std::string line;
+    while (std::getline(inFile, line)) {
+        if (line.find("Username - ") == 0) {
+            fileUsername = line.substr(11); // Extract the username part
+        } else if (line.find("Password - ") == 0) {
+            filePassword = line.substr(11); // Extract the password part
+        }
+    }
+    inFile.close();
+    // Validate the entered password against the stored password
+    if (fileUsername == username && filePassword == password) {
+        std::cout << "Login successful!" << std::endl;
+        main_menu();
+    } else {
+        std::cout << "Login failed: Incorrect username or password." << std::endl;
     }
 }
 //Main menu of the application
