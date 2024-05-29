@@ -5,16 +5,6 @@
 #include <fstream>
 #include <string>
 #include <unordered_map>
-
-int Flow::get_option(){
-    int option;
-    while(!(std::cin >> option)){
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Invalid input. Please enter a number: ";
-    }
-    return option;
-}
 //Welcome and sign up/in page
 void Flow::start_up_page() {
     int option = 0;
@@ -101,35 +91,10 @@ void Flow::sign_up_option() {
 void Flow::login() {
     std::string username, password;
     std::cout << "Enter username: ";
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear any leftover input
     std::getline(std::cin, username);
     std::cout << "Enter password: ";
     std::getline(std::cin, password);
-    // Construct the filename from the username
-    std::string accountFile = username + "_account.txt";
-    // Open the file and read the stored username and password
-    std::ifstream inFile(accountFile);
-    if (!inFile.is_open()) {
-        std::cout << "Login failed: Username not found." << std::endl;
-        return;
-    }
-    std::string fileUsername, filePassword;
-    std::string line;
-    while (std::getline(inFile, line)) {
-        if (line.find("Username - ") == 0) {
-            fileUsername = line.substr(11); // Extract the username part
-        } else if (line.find("Password - ") == 0) {
-            filePassword = line.substr(11); // Extract the password part
-        }
-    }
-    inFile.close();
-    // Validate the entered password against the stored password
-    if (fileUsername == username && filePassword == password) {
-        std::cout << "Login successful!" << std::endl;
-        main_menu();
-    } else {
-        std::cout << "Login failed: Incorrect username or password." << std::endl;
-    }
 }
 //Main menu of the application
 void Flow::main_menu() {
@@ -146,7 +111,6 @@ void Flow::main_menu() {
         std::cout << "===================" << std::endl;
         std::cout << "Enter Option: ";
         option = get_option();
-
         switch(option){
             case 1:{
                 deposit_menu();
@@ -187,21 +151,29 @@ int Flow::deposit_menu(){
             case 1: {
                 std::cout << "How much would you like to deposit to checkings? - $";
                 deposit_amount = get_option();
-                checking_account.deposit(deposit_amount);
+                while(!checking_account.deposit(deposit_amount)){
+                    std::cout << "Enter a valid amount...." << std::endl;
+                    std::cout << "How much would you like to deposit? - $" << std::endl;
+                    deposit_amount = get_option();
+                }                
                 std::cout << "Deposited $" << deposit_amount << " to checkings account." << std::endl;
                 break;
             }
             //Savings Account
             case 2:{
-                std::cout << "How much would you like to deposit to checkings? - $";
+                std::cout << "How much would you like to deposit to savings? - $";
                 deposit_amount = get_option();
-                saving_account.deposit(deposit_amount);
+                while(!saving_account.deposit(deposit_amount)){
+                    std::cout << "Enter a valid amount...." << std::endl;
+                    std::cout << "How much would you like to deposit? - $" << std::endl;
+                    deposit_amount = get_option();
+                }                
                 std::cout << "Deposited $" << deposit_amount << " to savings account." << std::endl;
                 break;
             }
             //Exit from program
             case 3:{
-                std::cout << "Exiting......" << std::endl;
+                std::cout << "Exiting to main menu" << std::endl;
                 exit(0);
             }
             default:
@@ -225,23 +197,38 @@ void Flow::withdraw_menu() {
 
         double withdraw_amount;
         switch(option) {
-            case 1:
+            case 1:{
                 std::cout << "How much would you like to withdraw from checkings? - $";
                 withdraw_amount = get_option();
-                checking_account.withdraw(withdraw_amount);
+                // Loop until a valid withdraw amount is entered
+                while (!checking_account.withdraw(withdraw_amount)) {
+                    std::cout << "Enter a valid amount..... " << std::endl;
+                    std::cout << "How much would you like to withdraw from checkings? - $";
+                    withdraw_amount = get_option();
+                }
                 std::cout << "Withdrew $" << withdraw_amount << " from checkings account." << std::endl;
                 break;
-            case 2:
+            }
+            case 2:{
                 std::cout << "How much would you like to withdraw from savings? - $";
                 withdraw_amount = get_option();
-                saving_account.withdraw(withdraw_amount);
+                // Loop until a valid withdraw amount is entered
+                while (!saving_account.withdraw(withdraw_amount)) {
+                    std::cout << "Enter a valid amount..... " << std::endl;
+                    std::cout << "How much would you like to withdraw from savings? - $";
+                    withdraw_amount = get_option();
+                }
                 std::cout << "Withdrew $" << withdraw_amount << " from savings account." << std::endl;
                 break;
-            case 3:
+            }
+            case 3:{
                 std::cout << "Exiting to main menu." << std::endl;
                 return;
-            default:
+            }
+                
+            default:{
                 std::cout << "Invalid option. Please try again." << std::endl;
+            }
         }
     }
 }

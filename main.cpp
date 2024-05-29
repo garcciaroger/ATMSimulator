@@ -5,6 +5,6 @@
 
 int main(){
     Flow startProgram;
-    startProgram.start_up_page();
+    startProgram.main_menu();
 }
 

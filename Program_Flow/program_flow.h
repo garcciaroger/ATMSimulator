@@ -28,16 +28,4 @@ private:
     AccountHolder newAccount;
     std::unordered_map<std::string, AccountHolder*> accounts;  // Hash table to store accounts
     int get_option();
-
-    // Private static helper function to trim whitespace
-    static std::string trim(const std::string& str) {
-        auto start = std::find_if_not(str.begin(), str.end(), [](unsigned char ch) {
-            return std::isspace(ch);
-        });
-        auto end = std::find_if_not(str.rbegin(), str.rend(), [](unsigned char ch) {
-            return std::isspace(ch);
-        }).base();
-        
-        return (start < end ? std::string(start, end) : "");
-    }
 };
