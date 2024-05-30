@@ -16,7 +16,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
@@ -32,7 +33,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
@@ -41,15 +43,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ATMsim::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ATMsim-Debug-42aec6a7d1cb81b5363e.json",
+					"jsonFile" : "target-ATMsim-Debug-0be47971cf5d41bb4341.json",
 					"name" : "ATMsim",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "test_account::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test_account-Debug-e44f4b4916157b2cd589.json",
-					"name" : "test_account",
+					"id" : "AccountTest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AccountTest-Debug-c7f0f2cc32d9d3c89b1b.json",
+					"name" : "AccountTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "HolderTest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-HolderTest-Debug-0581e5e6d3748a47467f.json",
+					"name" : "HolderTest",
 					"projectIndex" : 0
 				}
 			]

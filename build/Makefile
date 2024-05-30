@@ -130,17 +130,30 @@ ATMsim/fast:
 .PHONY : ATMsim/fast
 
 #=============================================================================
-# Target rules for targets named test_account
+# Target rules for targets named AccountTest
 
 # Build rule for target.
-test_account: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_account
-.PHONY : test_account
+AccountTest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 AccountTest
+.PHONY : AccountTest
 
 # fast build rule for target.
-test_account/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_account.dir/build.make CMakeFiles/test_account.dir/build
-.PHONY : test_account/fast
+AccountTest/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AccountTest.dir/build.make CMakeFiles/AccountTest.dir/build
+.PHONY : AccountTest/fast
+
+#=============================================================================
+# Target rules for targets named HolderTest
+
+# Build rule for target.
+HolderTest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 HolderTest
+.PHONY : HolderTest
+
+# fast build rule for target.
+HolderTest/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HolderTest.dir/build.make CMakeFiles/HolderTest.dir/build
+.PHONY : HolderTest/fast
 
 AccountHolder/AccountHolder.o: AccountHolder/AccountHolder.cpp.o
 .PHONY : AccountHolder/AccountHolder.o
@@ -148,6 +161,7 @@ AccountHolder/AccountHolder.o: AccountHolder/AccountHolder.cpp.o
 # target to build an object file
 AccountHolder/AccountHolder.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/AccountHolder/AccountHolder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HolderTest.dir/build.make CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o
 .PHONY : AccountHolder/AccountHolder.cpp.o
 
 AccountHolder/AccountHolder.i: AccountHolder/AccountHolder.cpp.i
@@ -156,6 +170,7 @@ AccountHolder/AccountHolder.i: AccountHolder/AccountHolder.cpp.i
 # target to preprocess a source file
 AccountHolder/AccountHolder.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/AccountHolder/AccountHolder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HolderTest.dir/build.make CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.i
 .PHONY : AccountHolder/AccountHolder.cpp.i
 
 AccountHolder/AccountHolder.s: AccountHolder/AccountHolder.cpp.s
@@ -164,6 +179,7 @@ AccountHolder/AccountHolder.s: AccountHolder/AccountHolder.cpp.s
 # target to generate assembly for a file
 AccountHolder/AccountHolder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/AccountHolder/AccountHolder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HolderTest.dir/build.make CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.s
 .PHONY : AccountHolder/AccountHolder.cpp.s
 
 AccountHolder/AccountHolder_test.o: AccountHolder/AccountHolder_test.cpp.o
@@ -171,7 +187,7 @@ AccountHolder/AccountHolder_test.o: AccountHolder/AccountHolder_test.cpp.o
 
 # target to build an object file
 AccountHolder/AccountHolder_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_account.dir/build.make CMakeFiles/test_account.dir/AccountHolder/AccountHolder_test.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HolderTest.dir/build.make CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o
 .PHONY : AccountHolder/AccountHolder_test.cpp.o
 
 AccountHolder/AccountHolder_test.i: AccountHolder/AccountHolder_test.cpp.i
@@ -179,7 +195,7 @@ AccountHolder/AccountHolder_test.i: AccountHolder/AccountHolder_test.cpp.i
 
 # target to preprocess a source file
 AccountHolder/AccountHolder_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_account.dir/build.make CMakeFiles/test_account.dir/AccountHolder/AccountHolder_test.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HolderTest.dir/build.make CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.i
 .PHONY : AccountHolder/AccountHolder_test.cpp.i
 
 AccountHolder/AccountHolder_test.s: AccountHolder/AccountHolder_test.cpp.s
@@ -187,7 +203,7 @@ AccountHolder/AccountHolder_test.s: AccountHolder/AccountHolder_test.cpp.s
 
 # target to generate assembly for a file
 AccountHolder/AccountHolder_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_account.dir/build.make CMakeFiles/test_account.dir/AccountHolder/AccountHolder_test.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HolderTest.dir/build.make CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.s
 .PHONY : AccountHolder/AccountHolder_test.cpp.s
 
 CheckingSaving/CheckingSaving.o: CheckingSaving/CheckingSaving.cpp.o
@@ -196,6 +212,7 @@ CheckingSaving/CheckingSaving.o: CheckingSaving/CheckingSaving.cpp.o
 # target to build an object file
 CheckingSaving/CheckingSaving.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/CheckingSaving/CheckingSaving.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AccountTest.dir/build.make CMakeFiles/AccountTest.dir/CheckingSaving/CheckingSaving.cpp.o
 .PHONY : CheckingSaving/CheckingSaving.cpp.o
 
 CheckingSaving/CheckingSaving.i: CheckingSaving/CheckingSaving.cpp.i
@@ -204,6 +221,7 @@ CheckingSaving/CheckingSaving.i: CheckingSaving/CheckingSaving.cpp.i
 # target to preprocess a source file
 CheckingSaving/CheckingSaving.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/CheckingSaving/CheckingSaving.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AccountTest.dir/build.make CMakeFiles/AccountTest.dir/CheckingSaving/CheckingSaving.cpp.i
 .PHONY : CheckingSaving/CheckingSaving.cpp.i
 
 CheckingSaving/CheckingSaving.s: CheckingSaving/CheckingSaving.cpp.s
@@ -212,7 +230,32 @@ CheckingSaving/CheckingSaving.s: CheckingSaving/CheckingSaving.cpp.s
 # target to generate assembly for a file
 CheckingSaving/CheckingSaving.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/CheckingSaving/CheckingSaving.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AccountTest.dir/build.make CMakeFiles/AccountTest.dir/CheckingSaving/CheckingSaving.cpp.s
 .PHONY : CheckingSaving/CheckingSaving.cpp.s
+
+CheckingSaving/CheckingSaving_test.o: CheckingSaving/CheckingSaving_test.cpp.o
+.PHONY : CheckingSaving/CheckingSaving_test.o
+
+# target to build an object file
+CheckingSaving/CheckingSaving_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AccountTest.dir/build.make CMakeFiles/AccountTest.dir/CheckingSaving/CheckingSaving_test.cpp.o
+.PHONY : CheckingSaving/CheckingSaving_test.cpp.o
+
+CheckingSaving/CheckingSaving_test.i: CheckingSaving/CheckingSaving_test.cpp.i
+.PHONY : CheckingSaving/CheckingSaving_test.i
+
+# target to preprocess a source file
+CheckingSaving/CheckingSaving_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AccountTest.dir/build.make CMakeFiles/AccountTest.dir/CheckingSaving/CheckingSaving_test.cpp.i
+.PHONY : CheckingSaving/CheckingSaving_test.cpp.i
+
+CheckingSaving/CheckingSaving_test.s: CheckingSaving/CheckingSaving_test.cpp.s
+.PHONY : CheckingSaving/CheckingSaving_test.s
+
+# target to generate assembly for a file
+CheckingSaving/CheckingSaving_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AccountTest.dir/build.make CMakeFiles/AccountTest.dir/CheckingSaving/CheckingSaving_test.cpp.s
+.PHONY : CheckingSaving/CheckingSaving_test.cpp.s
 
 Program_Flow/program_flow.o: Program_Flow/program_flow.cpp.o
 .PHONY : Program_Flow/program_flow.o
@@ -295,7 +338,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ATMsim"
-	@echo "... test_account"
+	@echo "... AccountTest"
+	@echo "... HolderTest"
 	@echo "... AccountHolder/AccountHolder.o"
 	@echo "... AccountHolder/AccountHolder.i"
 	@echo "... AccountHolder/AccountHolder.s"
@@ -305,6 +349,9 @@ help:
 	@echo "... CheckingSaving/CheckingSaving.o"
 	@echo "... CheckingSaving/CheckingSaving.i"
 	@echo "... CheckingSaving/CheckingSaving.s"
+	@echo "... CheckingSaving/CheckingSaving_test.o"
+	@echo "... CheckingSaving/CheckingSaving_test.i"
+	@echo "... CheckingSaving/CheckingSaving_test.s"
 	@echo "... Program_Flow/program_flow.o"
 	@echo "... Program_Flow/program_flow.i"
 	@echo "... Program_Flow/program_flow.s"

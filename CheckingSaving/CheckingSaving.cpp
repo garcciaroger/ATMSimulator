@@ -1,17 +1,16 @@
-#pragma once
 #include <iostream>
 #include <cctype>
 #include <string>
 #include "CheckingSaving.h"
 
 //Validates the user amount in that there's no characters and amount less than 0
-bool Account::validate_amount(double const amount){
-    if(amount <= 0){
-        std::cout << "ERROR: amout must be greater than 0" << std::endl;
+bool Account::validate_amount(double const amount) {
+    if (amount <= 0) {
+        std::cout << "ERROR: amount must be greater than 0" << std::endl;
         return false;
     }
-    if(amount > CONST_MAX_LIMIT){
-        std::cout << "ERROR: amout limit reached" << std::endl;
+    if (amount > Account::CONST_MAX_LIMIT) { // Use Account::CONST_MAX_LIMIT
+        std::cout << "ERROR: amount limit reached" << std::endl;
         return false;
     }
     return true;

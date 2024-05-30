@@ -62,5 +62,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ATMsim.dir/DependInfo.cmake"
-  "CMakeFiles/test_account.dir/DependInfo.cmake"
+  "CMakeFiles/AccountTest.dir/DependInfo.cmake"
+  "CMakeFiles/HolderTest.dir/DependInfo.cmake"
   )

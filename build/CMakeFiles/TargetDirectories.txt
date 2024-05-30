@@ -1,4 +1,5 @@
 /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles/ATMsim.dir
-/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles/test_account.dir
+/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles/AccountTest.dir
+/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles/HolderTest.dir
 /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles/edit_cache.dir
 /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles/rebuild_cache.dir
