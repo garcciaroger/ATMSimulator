@@ -138,6 +138,11 @@ public:
             std::cout << "ERROR: Email cannot be empty." << std::endl;
             return false;
         }
+        // Check if email contains the .com domain
+        size_t found = new_email_address.find(".com");
+        if(found != std::string::npos){
+            std::cout << "ERROR: Cannot find the domain .com" << std::endl;
+        }
         // Check for the presence of '@' symbol
         size_t at_pos = new_email_address.find('@');
         if (at_pos == std::string::npos) {
@@ -159,6 +164,18 @@ public:
         if (new_email_address.find(' ') != std::string::npos) {
             std::cout << "ERROR: Invalid Email address. Spaces are not allowed." << std::endl;
             return false;
+        }
+        // Check for spaces, which are illegal in email addresses
+        if (new_email_address.find(' ') != std::string::npos) {
+            std::cout << "ERROR: Invalid Email address. Spaces are not allowed." << std::endl;
+            return false;
+        }
+        // Check for special characters in the email name (before the '@' symbol)
+        for (size_t i = 0; i < at_pos; ++i) {
+            if (!isalnum(new_email_address[i]) && new_email_address[i] != '.' && new_email_address[i] != '_' && new_email_address[i] != '-') {
+                std::cout << "ERROR: Invalid Email address. Special characters are not allowed in the email name." << std::endl;
+                return false;
+            }
         }
         // Set the email address if all checks are passed
         email_address = new_email_address;
