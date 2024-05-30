@@ -2,6 +2,8 @@
 #include<iostream>
 #include<cctype>
 #include<string>
+#include <regex>
+#include <unordered_set>
 
 class AccountHolder{
 private:
@@ -216,105 +218,122 @@ public:
         return true;
     }
     //Sets user address as well as test input for correctness
-    bool set_street_address(std::string new_street_address){
-         // Check if the state name is empty first
+    bool set_street_address(const std::string& new_street_address) {
+        // Check if the street address is empty
         if (new_street_address.empty()) {
-            std::cout << "ERROR: State cannot be empty." << std::endl;
+            std::cout << "ERROR: Street address cannot be empty." << std::endl;
             return false;
         }
-        //Check for leading/trailing whitespace or excessive spaces
-        if (std::isspace(static_cast<unsigned char>(new_street_address.front())) || std::isspace(static_cast<unsigned char>(new_street_address.back()))) {
-            std::cout << "ERROR: State name should not start or end with a space." << std::endl;
+        // Check for leading whitespace
+        if (std::isspace(static_cast<unsigned char>(new_street_address.front()))) {
+            std::cout << "ERROR: Street address should not start with a space." << std::endl;
             return false;
         }
-        // Checking for multiple consecutive spaces
-        auto it = new_street_address.find("  ");
-        if (it != std::string::npos) {
-            std::cout << "ERROR: State name should not contain consecutive spaces." << std::endl;
+        // Check for trailing whitespace
+        if (std::isspace(static_cast<unsigned char>(new_street_address.back()))) {
+            std::cout << "ERROR: Street address should not end with a space." << std::endl;
             return false;
         }
-        // Assuming state is a member of the class, set its value
+        // Check for multiple consecutive spaces
+        if (new_street_address.find("  ") != std::string::npos) {
+            std::cout << "ERROR: Street address should not contain consecutive spaces." << std::endl;
+            return false;
+        }
+        // Check for special characters (allowing letters, digits, spaces, and standard punctuation)
+        std::regex valid_characters_pattern("^[a-zA-Z0-9 .,#-]*$");
+        if (!std::regex_match(new_street_address, valid_characters_pattern)) {
+            std::cout << "ERROR: Street address contains invalid characters." << std::endl;
+            return false;
+        }
+        // Check if the address contains at least one alphabetic character
+        std::regex alphabetic_pattern(".*[a-zA-Z]+.*");
+        if (!std::regex_match(new_street_address, alphabetic_pattern)) {
+            std::cout << "ERROR: Street address must contain at least one alphabetic character." << std::endl;
+            return false;
+        }
+        // Set the street address if all checks pass
         street_address = new_street_address;
         return true;
     }
     //This will set city and test for user input
-    bool set_city(std::string new_city){
-         // Check if the state name is empty first
+    bool set_city(const std::string& new_city) {
+        // Check if the city name is empty
         if (new_city.empty()) {
-            std::cout << "ERROR: State cannot be empty." << std::endl;
+            std::cout << "ERROR: City name cannot be empty." << std::endl;
             return false;
         }
-        // Check for invalid characters in the state name
-        for (char c : new_city) {
-            if (!std::isalpha(c) && !std::isspace(c)) {
-                std::cout << "ERROR: Invalid character in state name. Only letters and spaces are allowed." << std::endl;
-                return false;
-            }
-        }
+        // Check for leading or trailing whitespace
         if (std::isspace(static_cast<unsigned char>(new_city.front())) || std::isspace(static_cast<unsigned char>(new_city.back()))) {
-            std::cout << "ERROR: State name should not start or end with a space." << std::endl;
+            std::cout << "ERROR: City name should not start or end with a space." << std::endl;
             return false;
         }
-        // Checking for multiple consecutive spaces (optional but good for normalization)
-        auto it = new_city.find("  ");
-        if (it != std::string::npos) {
-            std::cout << "ERROR: State name should not contain consecutive spaces." << std::endl;
+        // Check for multiple consecutive spaces
+        if (new_city.find("  ") != std::string::npos) {
+            std::cout << "ERROR: City name should not contain consecutive spaces." << std::endl;
             return false;
         }
-        // Assuming state is a member of the class, set its value
+        // Check for invalid characters (allowing only letters, spaces, and dots)
+        std::regex valid_characters_pattern("^[a-zA-Z .]*$");
+        if (!std::regex_match(new_city, valid_characters_pattern)) {
+            std::cout << "ERROR: City name contains invalid characters. Only letters, spaces, and dots are allowed." << std::endl;
+            return false;
+        }
+        // Set the city name if all checks pass
         city = new_city;
         return true;
     }
     //This will set state and test input
-    bool set_state(std::string new_state){
-        // Check if the state name is empty first
+    bool set_state(const std::string& new_state) {
+        // Check if the state name is empty
         if (new_state.empty()) {
-            std::cout << "ERROR: State cannot be empty." << std::endl;
+            std::cout << "ERROR: State abbreviation cannot be empty." << std::endl;
             return false;
         }
-        // Check for invalid characters in the state name
-        for (char c : new_state) {
-            if (!std::isalpha(c) && !std::isspace(c)) {
-                std::cout << "ERROR: Invalid character in state name. Only letters and spaces are allowed." << std::endl;
-                return false;
-            }
-        }
-        //Optional: Check for leading/trailing whitespace or excessive spaces
+        // Check for leading or trailing whitespace
         if (std::isspace(static_cast<unsigned char>(new_state.front())) || std::isspace(static_cast<unsigned char>(new_state.back()))) {
-            std::cout << "ERROR: State name should not start or end with a space." << std::endl;
+            std::cout << "ERROR: State abbreviation should not start or end with a space." << std::endl;
             return false;
         }
-        // Checking for multiple consecutive spaces (optional but good for normalization)
-        auto it = new_state.find("  ");
-        if (it != std::string::npos) {
-            std::cout << "ERROR: State name should not contain consecutive spaces." << std::endl;
+        // Check for invalid characters (allowing only uppercase letters)
+        std::regex valid_characters_pattern("^[A-Z]{2}$");
+        if (!std::regex_match(new_state, valid_characters_pattern)) {
+            std::cout << "ERROR: State abbreviation is invalid. It should consist of two uppercase letters." << std::endl;
             return false;
         }
-        // Assuming state is a member of the class, set its value
+        // Check if the abbreviation is a valid state abbreviation
+        static const std::unordered_set<std::string> valid_state_abbreviations = {
+            "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+            "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+            "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+            "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+            "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"
+        };
+
+        if (valid_state_abbreviations.find(new_state) == valid_state_abbreviations.end()) {
+            std::cout << "ERROR: State abbreviation is not a valid state abbreviation." << std::endl;
+            return false;
+        }
+        // Set the state abbreviation if all checks pass
         state = new_state;
         return true;
     }
     //This is to set a zip code and test to ensure input valitity
-    bool set_zip_code(std::string new_zip) {
+    bool set_zip_code(const std::string& new_zip_code) {
         // Check if the zip code is empty
-        if (new_zip.empty()) {
-            std::cout << "ERROR: Zip code cannot be empty." << std::endl;
+        if (new_zip_code.empty()) {
+            std::cout << "ERROR: ZIP code cannot be empty." << std::endl;
             return false;
         }
-        // Check if the zip code is exactly 5 characters long
-        if (new_zip.length() != 5) {
-            std::cout << "ERROR: Zip code length must be 5 digits." << std::endl;
+        // Check for valid ZIP code format
+        std::regex valid_zip_code_pattern("^[0-9]{5}(-[0-9]{4})?$");
+        bool is_match = std::regex_match(new_zip_code, valid_zip_code_pattern);
+        std::cout << "Checking ZIP code: " << new_zip_code << " Match: " << (is_match ? "true" : "false") << std::endl;
+        if (!is_match) {
+            std::cout << "ERROR: ZIP code is invalid. It should be either a 5-digit number or a ZIP+4 format (5-digit number followed by a dash and 4-digit number)." << std::endl;
             return false;
         }
-        // Check for invalid characters and whitespace in the zip code
-        for (char c : new_zip) {
-            if (!std::isdigit(c) || std::isspace(static_cast<unsigned char>(c))) {
-                std::cout << "ERROR: Invalid character '" << c << "' in zip code; must be a digit and no spaces." << std::endl;
-                return false;
-            }
-        }
-        // Assuming zip_code is a member of the class, set its value
-        zip_code = new_zip;
+        // Set the ZIP code if all checks pass
+        zip_code = new_zip_code;
         return true;
     }
     //Method

@@ -841,4 +841,7 @@ CMakeFiles/test_account.dir/AccountHolder/AccountHolder_test.cpp.o: \
   /opt/homebrew/include/gtest/gtest-typed-test.h \
   /opt/homebrew/include/gtest/gtest_pred_impl.h \
   /opt/homebrew/include/gtest/gtest_prod.h \
-  /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder.h
+  /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/regex \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/deque \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/unordered_set

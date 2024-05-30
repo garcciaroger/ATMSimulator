@@ -44,7 +44,6 @@ TEST_F(AccountHolderFirstNameTest, SpecialCharacters) {
     EXPECT_EQ(holder.get_first_name(), "");
 }
 
-
 /*
     TESTS FOR set_last_name()
 */
@@ -183,6 +182,10 @@ TEST_F(AccountHolderAddressTest, EmptyStreetAddress) {
     EXPECT_FALSE(holder.set_street_address(""));
     EXPECT_EQ(holder.get_street_address(), "");
 }
+TEST_F(AccountHolderAddressTest, DoubleSpaceWithinAddress) {
+    EXPECT_FALSE(holder.set_street_address("123  Main St"));
+    EXPECT_EQ(holder.get_street_address(), "");
+}
 // Test for a street address with special characters
 TEST_F(AccountHolderAddressTest, StreetAddressWithSpecialCharacters) {
     EXPECT_TRUE(holder.set_street_address("456 Oak St #3"));
@@ -197,6 +200,155 @@ TEST_F(AccountHolderAddressTest, StreetAddressWithInvalidCharacters) {
 TEST_F(AccountHolderAddressTest, StreetAddressNumbersOnly) {
     EXPECT_FALSE(holder.set_street_address("5678"));
     EXPECT_EQ(holder.get_street_address(), "");
+}
+
+/*
+    TESTS for set_city()
+*/
+class AccountHolderCityTest : public ::testing::Test {
+protected:
+    AccountHolder holder; // AccountHolder instance for use in all tests
+};
+// Test for a valid city name
+TEST_F(AccountHolderCityTest, ValidCityName) {
+    EXPECT_TRUE(holder.set_city("Dallas"));
+    EXPECT_EQ(holder.get_city(), "Dallas");
+}
+// Test for an empty city name
+TEST_F(AccountHolderCityTest, EmptyCityName) {
+    EXPECT_FALSE(holder.set_city(""));
+    EXPECT_EQ(holder.get_city(), "");
+}
+// Test for a city name with leading space
+TEST_F(AccountHolderCityTest, LeadingSpaceCityName) {
+    EXPECT_FALSE(holder.set_city(" Dallas"));
+    EXPECT_EQ(holder.get_city(), "");
+}
+// Test for a city name with trailing space
+TEST_F(AccountHolderCityTest, TrailingSpaceCityName) {
+    EXPECT_FALSE(holder.set_city("Dallas "));
+    EXPECT_EQ(holder.get_city(), "");
+}
+// Test for a city name with double spaces within the name
+TEST_F(AccountHolderCityTest, DoubleSpaceWithinCityName) {
+    EXPECT_FALSE(holder.set_city("New  York"));
+    EXPECT_EQ(holder.get_city(), "");
+}
+// Test for a city name with special characters
+TEST_F(AccountHolderCityTest, CityNameWithSpecialCharacters) {
+    EXPECT_TRUE(holder.set_city("St. Louis"));
+    EXPECT_EQ(holder.get_city(), "St. Louis");
+}
+// Test for a city name with invalid characters
+TEST_F(AccountHolderCityTest, CityNameWithInvalidCharacters) {
+    EXPECT_FALSE(holder.set_city("New@York"));
+    EXPECT_EQ(holder.get_city(), "");
+}
+// Test for a city name with numbers only
+TEST_F(AccountHolderCityTest, CityNameNumbersOnly) {
+    EXPECT_FALSE(holder.set_city("1234"));
+    EXPECT_EQ(holder.get_city(), "");
+}
+
+/*
+    TESTS for set_state()
+*/
+class AccountHolderStateTest : public ::testing::Test {
+protected:
+    AccountHolder holder; // AccountHolder instance for use in all tests
+};
+// Test for a valid state abbreviation
+TEST_F(AccountHolderStateTest, ValidStateAbbreviation) {
+    EXPECT_TRUE(holder.set_state("TX"));
+    EXPECT_EQ(holder.get_state(), "TX");
+}
+// Test for an empty state abbreviation
+TEST_F(AccountHolderStateTest, EmptyStateAbbreviation) {
+    EXPECT_FALSE(holder.set_state(""));
+    EXPECT_EQ(holder.get_state(), "");
+}
+// Test for a state abbreviation with leading space
+TEST_F(AccountHolderStateTest, LeadingSpaceStateAbbreviation) {
+    EXPECT_FALSE(holder.set_state(" TX"));
+    EXPECT_EQ(holder.get_state(), "");
+}
+// Test for a state abbreviation with trailing space
+TEST_F(AccountHolderStateTest, TrailingSpaceStateAbbreviation) {
+    EXPECT_FALSE(holder.set_state("TX "));
+    EXPECT_EQ(holder.get_state(), "");
+}
+// Test for a state abbreviation with double spaces within the abbreviation
+TEST_F(AccountHolderStateTest, DoubleSpaceWithinStateAbbreviation) {
+    EXPECT_FALSE(holder.set_state("N Y"));
+    EXPECT_EQ(holder.get_state(), "");
+}
+// Test for a state abbreviation with lowercase characters
+TEST_F(AccountHolderStateTest, StateAbbreviationWithLowercaseCharacters) {
+    EXPECT_FALSE(holder.set_state("tx"));
+    EXPECT_EQ(holder.get_state(), "");
+}
+// Test for a state abbreviation with more than two characters
+TEST_F(AccountHolderStateTest, StateAbbreviationWithMoreThanTwoCharacters) {
+    EXPECT_FALSE(holder.set_state("TEX"));
+    EXPECT_EQ(holder.get_state(), "");
+}
+// Test for a state abbreviation that is not a valid state abbreviation
+TEST_F(AccountHolderStateTest, InvalidStateAbbreviation) {
+    EXPECT_FALSE(holder.set_state("ZZ"));
+    EXPECT_EQ(holder.get_state(), "");
+}
+
+/*
+    TESTS for set_zip()
+*/
+class AccountHolderZipCodeTest : public ::testing::Test {
+protected:
+    AccountHolder holder; // AccountHolder instance for use in all tests
+};
+// Test for a valid 5-digit ZIP code
+TEST_F(AccountHolderZipCodeTest, ValidFiveDigitZipCode) {
+    EXPECT_TRUE(holder.set_zip_code("12345"));
+    EXPECT_EQ(holder.get_zip_code(), "12345");
+}
+// Test for a valid 9-digit ZIP code (ZIP+4 format)
+TEST_F(AccountHolderZipCodeTest, ValidNineDigitZipCode) {
+    EXPECT_TRUE(holder.set_zip_code("12345-6789"));
+    EXPECT_EQ(holder.get_zip_code(), "12345-6789");
+}
+// Test for an empty ZIP code
+TEST_F(AccountHolderZipCodeTest, EmptyZipCode) {
+    EXPECT_FALSE(holder.set_zip_code(""));
+    EXPECT_EQ(holder.get_zip_code(), "");
+}
+// Test for a ZIP code with less than 5 digits
+TEST_F(AccountHolderZipCodeTest, LessThanFiveDigitZipCode) {
+    EXPECT_FALSE(holder.set_zip_code("1234"));
+    EXPECT_EQ(holder.get_zip_code(), "");
+}
+// Test for a ZIP code with more than 5 but less than 9 digits
+TEST_F(AccountHolderZipCodeTest, MoreThanFiveButLessThanNineDigitZipCode) {
+    EXPECT_FALSE(holder.set_zip_code("123456"));
+    EXPECT_EQ(holder.get_zip_code(), "");
+}
+// Test for a ZIP code with more than 5 digits and not in ZIP+4 format
+TEST_F(AccountHolderZipCodeTest, MoreThanFiveDigitsNotInZipPlusFourFormat) {
+    EXPECT_FALSE(holder.set_zip_code("123456789"));
+    EXPECT_EQ(holder.get_zip_code(), "");
+}
+// Test for a ZIP code with invalid characters
+TEST_F(AccountHolderZipCodeTest, ZipCodeWithInvalidCharacters) {
+    EXPECT_FALSE(holder.set_zip_code("1234a"));
+    EXPECT_EQ(holder.get_zip_code(), "");
+}
+// Test for a ZIP+4 code with invalid characters
+TEST_F(AccountHolderZipCodeTest, ZipPlusFourWithInvalidCharacters) {
+    EXPECT_FALSE(holder.set_zip_code("12345-67a9"));
+    EXPECT_EQ(holder.get_zip_code(), "");
+}
+// Test for a ZIP+4 code with missing dash
+TEST_F(AccountHolderZipCodeTest, ZipPlusFourMissingDash) {
+    EXPECT_FALSE(holder.set_zip_code("123456789"));
+    EXPECT_EQ(holder.get_zip_code(), "");
 }
 
 int main(int argc, char **argv) {
