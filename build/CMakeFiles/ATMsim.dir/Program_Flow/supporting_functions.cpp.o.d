@@ -1,7 +1,7 @@
 CMakeFiles/ATMsim.dir/Program_Flow/supporting_functions.cpp.o: \
-  /Users/rogergarcia/Desktop/ATMSimulator/Program_Flow/supporting_functions.cpp \
-  /Users/rogergarcia/Desktop/ATMSimulator/Program_Flow/program_flow.h \
-  /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder.h \
+  /Users/rogergarcia/Desktop/ATMsimulator/Program_Flow/supporting_functions.cpp \
+  /Users/rogergarcia/Desktop/ATMsimulator/Program_Flow/program_flow.h \
+  /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__assert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__config \
@@ -796,7 +796,7 @@ CMakeFiles/ATMsim.dir/Program_Flow/supporting_functions.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/regex \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/deque \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/unordered_set \
-  /Users/rogergarcia/Desktop/ATMSimulator/CheckingSaving/CheckingSaving.h \
+  /Users/rogergarcia/Desktop/ATMsimulator/CheckingSaving/CheckingSaving.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/filesystem \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__filesystem/copy_options.h \

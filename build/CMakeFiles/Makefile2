@@ -54,16 +54,17 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/rogergarcia/Desktop/ATMSimulator
+CMAKE_SOURCE_DIR = /Users/rogergarcia/Desktop/ATMsimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/rogergarcia/Desktop/ATMSimulator/build
+CMAKE_BINARY_DIR = /Users/rogergarcia/Desktop/ATMsimulator/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
 all: CMakeFiles/ATMsim.dir/all
+all: CMakeFiles/sqlite3.dir/all
 all: CMakeFiles/AccountTest.dir/all
 all: CMakeFiles/HolderTest.dir/all
 .PHONY : all
@@ -74,6 +75,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/ATMsim.dir/clean
+clean: CMakeFiles/sqlite3.dir/clean
 clean: CMakeFiles/AccountTest.dir/clean
 clean: CMakeFiles/HolderTest.dir/clean
 .PHONY : clean
@@ -82,17 +84,17 @@ clean: CMakeFiles/HolderTest.dir/clean
 # Target rules for target CMakeFiles/ATMsim.dir
 
 # All Build rule for target.
-CMakeFiles/ATMsim.dir/all:
+CMakeFiles/ATMsim.dir/all: CMakeFiles/sqlite3.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target ATMsim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target ATMsim"
 .PHONY : CMakeFiles/ATMsim.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ATMsim.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ATMsim.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles 0
 .PHONY : CMakeFiles/ATMsim.dir/rule
 
 # Convenience name for target.
@@ -105,20 +107,46 @@ CMakeFiles/ATMsim.dir/clean:
 .PHONY : CMakeFiles/ATMsim.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/sqlite3.dir
+
+# All Build rule for target.
+CMakeFiles/sqlite3.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles --progress-num=13,14 "Built target sqlite3"
+.PHONY : CMakeFiles/sqlite3.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/sqlite3.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sqlite3.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles 0
+.PHONY : CMakeFiles/sqlite3.dir/rule
+
+# Convenience name for target.
+sqlite3: CMakeFiles/sqlite3.dir/rule
+.PHONY : sqlite3
+
+# clean rule for target.
+CMakeFiles/sqlite3.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/clean
+.PHONY : CMakeFiles/sqlite3.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/AccountTest.dir
 
 # All Build rule for target.
 CMakeFiles/AccountTest.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AccountTest.dir/build.make CMakeFiles/AccountTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AccountTest.dir/build.make CMakeFiles/AccountTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles --progress-num=7,8,9 "Built target AccountTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles --progress-num=7,8,9 "Built target AccountTest"
 .PHONY : CMakeFiles/AccountTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/AccountTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/AccountTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles 0
 .PHONY : CMakeFiles/AccountTest.dir/rule
 
 # Convenience name for target.
@@ -137,14 +165,14 @@ CMakeFiles/AccountTest.dir/clean:
 CMakeFiles/HolderTest.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HolderTest.dir/build.make CMakeFiles/HolderTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HolderTest.dir/build.make CMakeFiles/HolderTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles --progress-num=10,11,12 "Built target HolderTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles --progress-num=10,11,12 "Built target HolderTest"
 .PHONY : CMakeFiles/HolderTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/HolderTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/HolderTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles 0
 .PHONY : CMakeFiles/HolderTest.dir/rule
 
 # Convenience name for target.

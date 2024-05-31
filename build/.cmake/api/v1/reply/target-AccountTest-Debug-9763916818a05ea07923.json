@@ -29,13 +29,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 26,
+				"line" : 35,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 23,
+				"line" : 32,
 				"parent" : 0
 			},
 			{
@@ -63,13 +63,13 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 43,
+				"line" : 52,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 51,
+				"line" : 60,
 				"parent" : 0
 			}
 		]
@@ -87,15 +87,15 @@
 			[
 				{
 					"backtrace" : 7,
-					"path" : "/Users/rogergarcia/Desktop/ATMSimulator/AccountHolder"
+					"path" : "/Users/rogergarcia/Desktop/ATMsimulator/AccountHolder"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/rogergarcia/Desktop/ATMSimulator/CheckingSaving"
+					"path" : "/Users/rogergarcia/Desktop/ATMsimulator/CheckingSaving"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/rogergarcia/Desktop/ATMSimulator/Program_Flow"
+					"path" : "/Users/rogergarcia/Desktop/ATMsimulator/Program_Flow"
 				},
 				{
 					"backtrace" : 8,

@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/rogergarcia/Desktop/ATMSimulator
+CMAKE_SOURCE_DIR = /Users/rogergarcia/Desktop/ATMsimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/rogergarcia/Desktop/ATMSimulator/build
+CMAKE_BINARY_DIR = /Users/rogergarcia/Desktop/ATMsimulator/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/HolderTest.dir/depend.make
@@ -70,32 +70,32 @@ include CMakeFiles/HolderTest.dir/progress.make
 include CMakeFiles/HolderTest.dir/flags.make
 
 CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o: CMakeFiles/HolderTest.dir/flags.make
-CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o: /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder_test.cpp
+CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o: /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder_test.cpp
 CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o: CMakeFiles/HolderTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o -MF CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o.d -o CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o -c /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o -MF CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o.d -o CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o -c /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder_test.cpp
 
 CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder_test.cpp > CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder_test.cpp > CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.i
 
 CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder_test.cpp -o CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder_test.cpp -o CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.s
 
 CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o: CMakeFiles/HolderTest.dir/flags.make
-CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o: /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder.cpp
+CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o: /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder.cpp
 CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o: CMakeFiles/HolderTest.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o -MF CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o.d -o CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o -c /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o -MF CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o.d -o CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.o -c /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder.cpp
 
 CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder.cpp > CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder.cpp > CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.i
 
 CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder.cpp -o CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder.cpp -o CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder.cpp.s
 
 # Object files for target HolderTest
 HolderTest_OBJECTS = \
@@ -111,7 +111,7 @@ HolderTest: CMakeFiles/HolderTest.dir/build.make
 HolderTest: /opt/homebrew/lib/libgtest_main.a
 HolderTest: /opt/homebrew/lib/libgtest.a
 HolderTest: CMakeFiles/HolderTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable HolderTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable HolderTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/HolderTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -123,6 +123,6 @@ CMakeFiles/HolderTest.dir/clean:
 .PHONY : CMakeFiles/HolderTest.dir/clean
 
 CMakeFiles/HolderTest.dir/depend:
-	cd /Users/rogergarcia/Desktop/ATMSimulator/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/rogergarcia/Desktop/ATMSimulator /Users/rogergarcia/Desktop/ATMSimulator /Users/rogergarcia/Desktop/ATMSimulator/build /Users/rogergarcia/Desktop/ATMSimulator/build /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles/HolderTest.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/rogergarcia/Desktop/ATMsimulator/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/rogergarcia/Desktop/ATMsimulator /Users/rogergarcia/Desktop/ATMsimulator /Users/rogergarcia/Desktop/ATMsimulator/build /Users/rogergarcia/Desktop/ATMsimulator/build /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles/HolderTest.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/HolderTest.dir/depend
 

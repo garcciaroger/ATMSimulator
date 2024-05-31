@@ -19,6 +19,15 @@ target_include_directories(ATMsim PRIVATE
     ${CMAKE_SOURCE_DIR}/Program_Flow
 )
 
+# Add SQLite3 library
+add_library(sqlite3 STATIC sqlite/sqlite3.c)
+
+# Specify include directories for the SQLite library
+target_include_directories(sqlite3 PRIVATE ${CMAKE_SOURCE_DIR})
+
+# Link the main executable with SQLite
+target_link_libraries(ATMsim sqlite3)
+
 # Setup for GoogleTest
 find_package(GTest REQUIRED)
 

@@ -11,7 +11,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/rogergarcia/Desktop/ATMSimulator/build"
+			"value" : "/Users/rogergarcia/Desktop/ATMsimulator/build"
 		},
 		{
 			"name" : "ATMsim_IS_TOP_LEVEL",
@@ -35,7 +35,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/rogergarcia/Desktop/ATMSimulator"
+			"value" : "/Users/rogergarcia/Desktop/ATMsimulator"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/rogergarcia/Desktop/ATMSimulator/build"
+			"value" : "/Users/rogergarcia/Desktop/ATMsimulator/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -527,7 +527,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles/pkgRedirects"
+			"value" : "/Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",

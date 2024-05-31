@@ -17,7 +17,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -34,7 +35,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -43,22 +45,29 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ATMsim::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ATMsim-Debug-0be47971cf5d41bb4341.json",
+					"jsonFile" : "target-ATMsim-Debug-f6d2c7fe949790662aed.json",
 					"name" : "ATMsim",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "AccountTest::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-AccountTest-Debug-c7f0f2cc32d9d3c89b1b.json",
+					"jsonFile" : "target-AccountTest-Debug-9763916818a05ea07923.json",
 					"name" : "AccountTest",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "HolderTest::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-HolderTest-Debug-0581e5e6d3748a47467f.json",
+					"jsonFile" : "target-HolderTest-Debug-050d309b61fac3d815f6.json",
 					"name" : "HolderTest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sqlite3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sqlite3-Debug-32bf20a76c3b5fa0452e.json",
+					"name" : "sqlite3",
 					"projectIndex" : 0
 				}
 			]
@@ -67,8 +76,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/rogergarcia/Desktop/ATMSimulator/build",
-		"source" : "/Users/rogergarcia/Desktop/ATMSimulator"
+		"build" : "/Users/rogergarcia/Desktop/ATMsimulator/build",
+		"source" : "/Users/rogergarcia/Desktop/ATMsimulator"
 	},
 	"version" : 
 	{

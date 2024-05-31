@@ -57,10 +57,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/rogergarcia/Desktop/ATMSimulator
+CMAKE_SOURCE_DIR = /Users/rogergarcia/Desktop/ATMsimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/rogergarcia/Desktop/ATMSimulator/build
+CMAKE_BINARY_DIR = /Users/rogergarcia/Desktop/ATMsimulator/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles /Users/rogergarcia/Desktop/ATMSimulator/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles /Users/rogergarcia/Desktop/ATMsimulator/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMSimulator/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/rogergarcia/Desktop/ATMsimulator/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,6 +128,19 @@ ATMsim: cmake_check_build_system
 ATMsim/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/build
 .PHONY : ATMsim/fast
+
+#=============================================================================
+# Target rules for targets named sqlite3
+
+# Build rule for target.
+sqlite3: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sqlite3
+.PHONY : sqlite3
+
+# fast build rule for target.
+sqlite3/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/build
+.PHONY : sqlite3/fast
 
 #=============================================================================
 # Target rules for targets named AccountTest
@@ -329,6 +342,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ATMsim.dir/build.make CMakeFiles/ATMsim.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+sqlite/sqlite3.o: sqlite/sqlite3.c.o
+.PHONY : sqlite/sqlite3.o
+
+# target to build an object file
+sqlite/sqlite3.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/sqlite/sqlite3.c.o
+.PHONY : sqlite/sqlite3.c.o
+
+sqlite/sqlite3.i: sqlite/sqlite3.c.i
+.PHONY : sqlite/sqlite3.i
+
+# target to preprocess a source file
+sqlite/sqlite3.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/sqlite/sqlite3.c.i
+.PHONY : sqlite/sqlite3.c.i
+
+sqlite/sqlite3.s: sqlite/sqlite3.c.s
+.PHONY : sqlite/sqlite3.s
+
+# target to generate assembly for a file
+sqlite/sqlite3.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3.dir/build.make CMakeFiles/sqlite3.dir/sqlite/sqlite3.c.s
+.PHONY : sqlite/sqlite3.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -340,6 +377,7 @@ help:
 	@echo "... ATMsim"
 	@echo "... AccountTest"
 	@echo "... HolderTest"
+	@echo "... sqlite3"
 	@echo "... AccountHolder/AccountHolder.o"
 	@echo "... AccountHolder/AccountHolder.i"
 	@echo "... AccountHolder/AccountHolder.s"
@@ -361,6 +399,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... sqlite/sqlite3.o"
+	@echo "... sqlite/sqlite3.i"
+	@echo "... sqlite/sqlite3.s"
 .PHONY : help
 
 

@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 #include <unordered_map>
+#include <sqlite3.h>
 //Welcome and sign up/in page
 void Flow::start_up_page() {
     int option = 0;
@@ -57,24 +58,35 @@ void Flow::sign_up_option() {
                 std::cout << "Error gathering customer information. Please try again." << std::endl;
             }
         } while (!isInformationCorrect);
-        // Create a file with account details
-        std::string accountFile = newAccount->get_username() + "_account.txt";
-        std::ofstream outFile(accountFile);
-        if (outFile.is_open()) {
-            outFile << "Username - " << newAccount->get_username() << "\n";
-            outFile << "Password - " << newAccount->get_password() << "\n";
-            outFile << "First Name - " << newAccount->get_first_name() << "\n";
-            outFile << "Last Name - " << newAccount->get_last_name() << "\n";
-            outFile << "Email Address - " << newAccount->get_email_address() << "\n";
-            outFile << "Phone Number - " << newAccount->get_phone_number() << "\n";
-            outFile << "Street Address - " << newAccount->get_street_address() << "\n";
-            outFile << "City - " << newAccount->get_city() << "\n";
-            outFile << "State - " << newAccount->get_state() << "\n";
-            outFile << "Zip Code - " << newAccount->get_zip_code() << "\n";
-            outFile.close();
-        } else {
-            std::cerr << "Error opening file: " << accountFile << std::endl;
+        // Open SQLite connection
+        sqlite3* db;
+        int rc = sqlite3_open("accounts.db", &db);
+        if (rc) {
+            std::cerr << "Error opening SQLite database: " << sqlite3_errmsg(db) << std::endl;
+            sqlite3_close(db);
+            return;
         }
+        // Prepare SQL statement
+        sqlite3_stmt* stmt;
+        const char* sql = "INSERT INTO accounts (username, password, first_name, last_name, email, phone, street_address, city, state, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        rc = sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr);
+        if (rc != SQLITE_OK) {
+            std::cerr << "Error preparing SQL statement: " << sqlite3_errmsg(db) << std::endl;
+            sqlite3_finalize(stmt);
+            sqlite3_close(db);
+            return;
+        }
+        // Bind parameters and execute statement
+        sqlite3_bind_text(stmt, 1, newAccount->get_username().c_str(), -1, SQLITE_STATIC);
+        sqlite3_bind_text(stmt, 2, newAccount->get_password().c_str(), -1, SQLITE_STATIC);
+        // Bind other parameters similarly...
+        rc = sqlite3_step(stmt);
+        if (rc != SQLITE_DONE) {
+            std::cerr << "Error inserting data: " << sqlite3_errmsg(db) << std::endl;
+        }
+        // Finalize statement and close connection
+        sqlite3_finalize(stmt);
+        sqlite3_close(db);
         // Delete the dynamically allocated account holder to free memory
         delete newAccount;
         // Ask user if they want to create another account
@@ -95,6 +107,36 @@ void Flow::login() {
     std::getline(std::cin, username);
     std::cout << "Enter password: ";
     std::getline(std::cin, password);
+    // SQLite database operations
+    sqlite3* db;
+    int rc = sqlite3_open("accounts.db", &db);
+    if (rc) {
+        std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return;
+    }
+    std::string query = "SELECT password FROM accounts WHERE username = '" + username + "'";
+    sqlite3_stmt* stmt;
+    rc = sqlite3_prepare_v2(db, query.c_str(), -1, &stmt, nullptr);
+    if (rc != SQLITE_OK) {
+        std::cerr << "SQL error: " << sqlite3_errmsg(db) << std::endl;
+        sqlite3_close(db);
+        return;
+    }
+    rc = sqlite3_step(stmt);
+    if (rc == SQLITE_ROW) {
+        // Retrieve the stored password
+        const unsigned char* storedPassword = sqlite3_column_text(stmt, 0);
+        if (password == reinterpret_cast<const char*>(storedPassword)) {
+            std::cout << "Login successful" << std::endl;
+        } else {
+            std::cout << "Incorrect password" << std::endl;
+        }
+    } else {
+        std::cout << "User not found" << std::endl;
+    }
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
 }
 //Main menu of the application
 void Flow::main_menu() {

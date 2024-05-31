@@ -1,5 +1,5 @@
 CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o: \
-  /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder_test.cpp \
+  /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder_test.cpp \
   /opt/homebrew/include/gtest/gtest.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/cstddef \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/__assert \
@@ -841,7 +841,7 @@ CMakeFiles/HolderTest.dir/AccountHolder/AccountHolder_test.cpp.o: \
   /opt/homebrew/include/gtest/gtest-typed-test.h \
   /opt/homebrew/include/gtest/gtest_pred_impl.h \
   /opt/homebrew/include/gtest/gtest_prod.h \
-  /Users/rogergarcia/Desktop/ATMSimulator/AccountHolder/AccountHolder.h \
+  /Users/rogergarcia/Desktop/ATMsimulator/AccountHolder/AccountHolder.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/regex \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/deque \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1/unordered_set

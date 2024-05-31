@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/clang++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/rogergarcia/Desktop/ATMSimulator/AccountHolder -I/Users/rogergarcia/Desktop/ATMSimulator/CheckingSaving -I/Users/rogergarcia/Desktop/ATMSimulator/Program_Flow -isystem /opt/homebrew/include
+CXX_INCLUDES = -I/Users/rogergarcia/Desktop/ATMsimulator/AccountHolder -I/Users/rogergarcia/Desktop/ATMsimulator/CheckingSaving -I/Users/rogergarcia/Desktop/ATMsimulator/Program_Flow -isystem /opt/homebrew/include
 
 CXX_FLAGSarm64 = -g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk
 

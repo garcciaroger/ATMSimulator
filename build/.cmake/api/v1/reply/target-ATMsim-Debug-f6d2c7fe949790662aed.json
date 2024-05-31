@@ -11,6 +11,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"target_link_libraries",
 			"target_include_directories"
 		],
 		"files" : 
@@ -31,6 +32,12 @@
 			{
 				"command" : 1,
 				"file" : 0,
+				"line" : 29,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
 				"line" : 16,
 				"parent" : 0
 			}
@@ -48,16 +55,16 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
-					"path" : "/Users/rogergarcia/Desktop/ATMSimulator/AccountHolder"
+					"backtrace" : 3,
+					"path" : "/Users/rogergarcia/Desktop/ATMsimulator/AccountHolder"
 				},
 				{
-					"backtrace" : 2,
-					"path" : "/Users/rogergarcia/Desktop/ATMSimulator/CheckingSaving"
+					"backtrace" : 3,
+					"path" : "/Users/rogergarcia/Desktop/ATMsimulator/CheckingSaving"
 				},
 				{
-					"backtrace" : 2,
-					"path" : "/Users/rogergarcia/Desktop/ATMSimulator/Program_Flow"
+					"backtrace" : 3,
+					"path" : "/Users/rogergarcia/Desktop/ATMsimulator/Program_Flow"
 				}
 			],
 			"language" : "CXX",
@@ -79,6 +86,13 @@
 			]
 		}
 	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "sqlite3::@6890427a1f51a3e7e1df"
+		}
+	],
 	"id" : "ATMsim::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
@@ -91,6 +105,11 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libsqlite3.a",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"

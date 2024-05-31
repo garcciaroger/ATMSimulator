@@ -38,7 +38,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CMake.app/Contents/share/cmake-3.27/Modules/Platform/Darwin-Initialize.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.27/Modules/Platform/Darwin.cmake"
   "/Applications/CMake.app/Contents/share/cmake-3.27/Modules/Platform/UnixPaths.cmake"
-  "/Users/rogergarcia/Desktop/ATMSimulator/CMakeLists.txt"
+  "/Users/rogergarcia/Desktop/ATMsimulator/CMakeLists.txt"
   "CMakeFiles/3.27.0-rc3/CMakeCCompiler.cmake"
   "CMakeFiles/3.27.0-rc3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.27.0-rc3/CMakeSystem.cmake"
@@ -62,6 +62,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/ATMsim.dir/DependInfo.cmake"
+  "CMakeFiles/sqlite3.dir/DependInfo.cmake"
   "CMakeFiles/AccountTest.dir/DependInfo.cmake"
   "CMakeFiles/HolderTest.dir/DependInfo.cmake"
   )
